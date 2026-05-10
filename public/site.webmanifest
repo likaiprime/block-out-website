@@ -1,0 +1,21 @@
+{
+  "name": "Block Out! Walkthrough",
+  "short_name": "Block Out! Guide",
+  "description": "Video walkthroughs for every Block Out! level — free, no sign-up",
+  "start_url": "/en/",
+  "display": "standalone",
+  "background_color": "#0a0a0a",
+  "theme_color": "#007AFF",
+  "icons": [
+    {
+      "src": "/icon-192.png",
+      "sizes": "192x192",
+      "type": "image/png"
+    },
+    {
+      "src": "/icon-512.png",
+      "sizes": "512x512",
+      "type": "image/png"
+    }
+  ]
+}

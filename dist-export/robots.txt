@@ -1,0 +1,9 @@
+# *
+User-agent: *
+Allow: /
+
+# Host
+Host: https://blockout.cc
+
+# Sitemaps
+Sitemap: https://blockout.cc/sitemap.xml

@@ -1,0 +1,10 @@
+services:
+  site:
+    build: .
+    image: block-out-site:local
+    container_name: block-out-site
+    ports:
+      - "3000:80"
+    volumes:
+      - ./out:/usr/share/nginx/html:ro
+    restart: unless-stopped

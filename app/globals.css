@@ -1,0 +1,412 @@
+@import "tailwindcss";
+
+@custom-variant dark (&:is(.dark *));
+
+@theme {
+  --color-border: hsl(var(--border));
+  --color-input: hsl(var(--input));
+  --color-ring: hsl(var(--ring));
+  --color-background: hsl(var(--background));
+  --color-foreground: hsl(var(--foreground));
+
+  --color-primary: hsl(var(--primary));
+  --color-primary-foreground: hsl(var(--primary-foreground));
+
+  --color-secondary: hsl(var(--secondary));
+  --color-secondary-foreground: hsl(var(--secondary-foreground));
+
+  --color-destructive: hsl(var(--destructive));
+  --color-destructive-foreground: hsl(var(--destructive-foreground));
+
+  --color-muted: hsl(var(--muted));
+  --color-muted-foreground: hsl(var(--muted-foreground));
+
+  --color-accent: hsl(var(--accent));
+  --color-accent-foreground: hsl(var(--accent-foreground));
+
+  --color-popover: hsl(var(--popover));
+  --color-popover-foreground: hsl(var(--popover-foreground));
+
+  --color-card: hsl(var(--card));
+  --color-card-foreground: hsl(var(--card-foreground));
+
+  /* Block Out! game block colors — saturated, used for chips, accents, badges.
+     Canonical reference: see DESIGN.md §2.1. */
+  --color-block-red: hsl(4 100% 59%);
+  --color-block-orange: hsl(11 100% 63%);
+  --color-block-yellow: hsl(35 100% 50%);
+  --color-block-green: hsl(147 57% 49%);
+  --color-block-blue: hsl(211 100% 50%);
+  --color-block-purple: hsl(277 67% 60%);
+
+  --radius-lg: var(--radius);
+  --radius-md: calc(var(--radius) - 2px);
+  --radius-sm: calc(var(--radius) - 4px);
+  --radius-2xl: calc(var(--radius) + 6px);
+
+  /* Motion — see DESIGN.md §6 */
+  --ease-standard: cubic-bezier(0.22, 1, 0.36, 1);
+  --ease-spring: cubic-bezier(0.34, 1.56, 0.64, 1);
+
+  --animate-accordion-down: accordion-down 0.2s ease-out;
+  --animate-accordion-up: accordion-up 0.2s ease-out;
+  --animate-fade-in: fade-in 0.5s var(--ease-standard) forwards;
+  --animate-rise: rise 0.6s var(--ease-standard) forwards;
+  --animate-pop: pop 0.45s var(--ease-spring) forwards;
+  --animate-float: float 6s ease-in-out infinite;
+  --animate-slide-up: slide-up 0.6s var(--ease-spring) forwards;
+  --animate-block-bounce: block-bounce 0.7s var(--ease-spring) forwards;
+  --animate-block-shimmer: block-shimmer 3.5s ease-in-out infinite;
+
+  --font-sans: var(--font-sans), system-ui, -apple-system, "Segoe UI",
+    Roboto, sans-serif;
+
+  @keyframes accordion-down {
+    from { height: 0; }
+    to   { height: var(--radix-accordion-content-height); }
+  }
+  @keyframes accordion-up {
+    from { height: var(--radix-accordion-content-height); }
+    to   { height: 0; }
+  }
+  @keyframes fade-in {
+    0%   { opacity: 0; transform: translateY(8px); }
+    100% { opacity: 1; transform: translateY(0); }
+  }
+  @keyframes rise {
+    0%   { opacity: 0; transform: translateY(20px); }
+    100% { opacity: 1; transform: translateY(0); }
+  }
+  @keyframes pop {
+    0%   { opacity: 0; transform: scale(0.85); }
+    60%  { opacity: 1; transform: scale(1.04); }
+    100% { opacity: 1; transform: scale(1); }
+  }
+  @keyframes float {
+    0%, 100% { transform: translateY(0); }
+    50%      { transform: translateY(-6px); }
+  }
+  @keyframes slide-up {
+    0%   { opacity: 0; transform: translateY(40px) scale(0.92); }
+    60%  { opacity: 1; transform: translateY(-4px) scale(1.01); }
+    100% { opacity: 1; transform: translateY(0) scale(1); }
+  }
+  @keyframes block-bounce {
+    0%   { opacity: 0; transform: translateY(28px) rotate(-6deg); }
+    55%  { opacity: 1; transform: translateY(-6px) rotate(2deg); }
+    80%  { transform: translateY(2px) rotate(-1deg); }
+    100% { opacity: 1; transform: translateY(0) rotate(0); }
+  }
+  @keyframes block-shimmer {
+    0%   { transform: translateX(-120%) skewX(-12deg); opacity: 0; }
+    35%  { opacity: 0.55; }
+    65%  { opacity: 0.55; }
+    100% { transform: translateX(220%) skewX(-12deg); opacity: 0; }
+  }
+}
+
+@utility container {
+  margin-inline: auto;
+  padding-inline: 1.25rem;
+  @media (width >= 768px) {
+    padding-inline: 2rem;
+  }
+  @media (width >= 1280px) {
+    max-width: 1200px;
+  }
+}
+
+@layer base {
+  *,
+  ::after,
+  ::before,
+  ::backdrop,
+  ::file-selector-button {
+    border-color: var(--color-gray-200, currentcolor);
+  }
+}
+
+@layer base {
+  :root {
+    /* Light: clean white/gray, lets the game colors pop */
+    --background: 0 0% 100%;
+    --foreground: 222 28% 10%;
+
+    --card: 0 0% 100%;
+    --card-foreground: 222 28% 10%;
+
+    --popover: 0 0% 100%;
+    --popover-foreground: 222 28% 10%;
+
+    /* Primary = game blue (#007AFF) — the most "Block Out!" color */
+    --primary: 211 100% 50%;
+    --primary-foreground: 0 0% 100%;
+
+    --secondary: 220 14% 96%;
+    --secondary-foreground: 222 28% 10%;
+
+    --muted: 220 14% 96%;
+    --muted-foreground: 220 9% 46%;
+
+    /* Accent = game orange (#FF6444) — pops on cards/icons */
+    --accent: 11 100% 63%;
+    --accent-foreground: 0 0% 100%;
+
+    --destructive: 4 100% 59%;
+    --destructive-foreground: 0 0% 100%;
+
+    --border: 220 13% 91%;
+    --input: 220 13% 91%;
+    --ring: 211 100% 50%;
+    --radius: 0.625rem;
+  }
+
+  .dark {
+    /* Dark: nearly black like the game's board */
+    --background: 222 28% 6%;
+    --foreground: 0 0% 98%;
+
+    --card: 222 24% 10%;
+    --card-foreground: 0 0% 98%;
+
+    --popover: 222 24% 10%;
+    --popover-foreground: 0 0% 98%;
+
+    --primary: 211 100% 60%;
+    --primary-foreground: 222 28% 6%;
+
+    --secondary: 222 18% 14%;
+    --secondary-foreground: 0 0% 98%;
+
+    --muted: 222 18% 13%;
+    --muted-foreground: 220 9% 64%;
+
+    --accent: 11 100% 65%;
+    --accent-foreground: 222 28% 6%;
+
+    --destructive: 4 100% 62%;
+    --destructive-foreground: 0 0% 100%;
+
+    --border: 222 16% 18%;
+    --input: 222 16% 18%;
+    --ring: 211 100% 60%;
+  }
+
+  html {
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    text-rendering: optimizeLegibility;
+    /* Sticky header offset for in-page anchor jumps */
+    scroll-padding-top: 5rem;
+  }
+
+  body {
+    @apply bg-background text-foreground;
+    font-feature-settings: "ss01", "cv11";
+  }
+
+  ::selection {
+    background: hsl(211 100% 50% / 0.2);
+  }
+
+  /* Stronger focus ring — keyboard users get a clear, branded indicator */
+  :focus-visible {
+    outline: 2px solid hsl(var(--ring));
+    outline-offset: 2px;
+    border-radius: 6px;
+  }
+
+  /* WCAG 2.5.5 — 44px touch targets on mobile */
+  button,
+  a {
+    touch-action: manipulation;
+  }
+}
+
+/* Difficulty pill — used across level pages */
+.badge-difficulty {
+  @apply inline-flex items-center gap-1.5 rounded-full px-2.5 py-1 text-xs font-semibold;
+}
+
+/* Game block surface — the saturated colored squares used in hero and chips.
+   Layered shadow stack mimics the lit-up, plastic feel of the in-game tiles. */
+.block-tile {
+  position: relative;
+  border-radius: 16px;
+  box-shadow:
+    inset 0 1px 0 hsl(0 0% 100% / 0.4),
+    inset 0 -3px 0 hsl(0 0% 0% / 0.18),
+    0 4px 12px -4px hsl(var(--shadow-color, 222 28% 10%) / 0.3);
+  transition:
+    transform 0.25s cubic-bezier(0.34, 1.56, 0.64, 1),
+    box-shadow 0.25s ease;
+}
+.block-tile:hover {
+  transform: translateY(-3px) scale(1.03);
+  box-shadow:
+    inset 0 1px 0 hsl(0 0% 100% / 0.45),
+    inset 0 -3px 0 hsl(0 0% 0% / 0.2),
+    0 12px 28px -8px hsl(var(--shadow-color, 222 28% 10%) / 0.45);
+}
+
+/* Shimmer highlight that sweeps across a tile face — pair with relative parent */
+.block-shimmer {
+  position: absolute;
+  inset: 0;
+  border-radius: inherit;
+  overflow: hidden;
+  pointer-events: none;
+}
+.block-shimmer::before {
+  content: "";
+  position: absolute;
+  top: -10%;
+  left: 0;
+  height: 120%;
+  width: 35%;
+  background: linear-gradient(
+    100deg,
+    transparent 0%,
+    hsl(0 0% 100% / 0.55) 50%,
+    transparent 100%
+  );
+  transform: translateX(-120%) skewX(-12deg);
+  animation: block-shimmer 3.5s ease-in-out infinite;
+  animation-delay: var(--shimmer-delay, 0s);
+}
+
+/* Checkerboard backdrop — game-board feel without rainbow blobs */
+.bg-checker {
+  background-image:
+    linear-gradient(45deg, hsl(var(--foreground) / 0.04) 25%, transparent 25%),
+    linear-gradient(-45deg, hsl(var(--foreground) / 0.04) 25%, transparent 25%),
+    linear-gradient(45deg, transparent 75%, hsl(var(--foreground) / 0.04) 75%),
+    linear-gradient(-45deg, transparent 75%, hsl(var(--foreground) / 0.04) 75%);
+  background-size: 32px 32px;
+  background-position: 0 0, 0 16px, 16px -16px, -16px 0;
+}
+
+/* Six-color dashed signature divider between sections */
+.divider-blocks {
+  height: 2px;
+  background-image: repeating-linear-gradient(
+    to right,
+    hsl(4 100% 59%) 0 16px,
+    transparent 16px 24px,
+    hsl(11 100% 63%) 24px 40px,
+    transparent 40px 48px,
+    hsl(35 100% 50%) 48px 64px,
+    transparent 64px 72px,
+    hsl(147 57% 49%) 72px 88px,
+    transparent 88px 96px,
+    hsl(211 100% 50%) 96px 112px,
+    transparent 112px 120px,
+    hsl(277 67% 60%) 120px 136px,
+    transparent 136px 144px
+  );
+  opacity: 0.55;
+}
+
+/* Hero block grid — 6 colored blocks arranged playfully, animated entrance */
+.block-grid {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 0.75rem;
+}
+.block-grid > * {
+  opacity: 0;
+  animation: pop 0.55s cubic-bezier(0.34, 1.56, 0.64, 1) forwards;
+}
+.block-grid > *:nth-child(1) { animation-delay: 0.05s; }
+.block-grid > *:nth-child(2) { animation-delay: 0.12s; }
+.block-grid > *:nth-child(3) { animation-delay: 0.19s; }
+.block-grid > *:nth-child(4) { animation-delay: 0.26s; }
+.block-grid > *:nth-child(5) { animation-delay: 0.33s; }
+.block-grid > *:nth-child(6) { animation-delay: 0.4s; }
+
+/* Spring hover — used on cards, chips, level tiles */
+.spring-hover {
+  transition:
+    transform 0.35s cubic-bezier(0.22, 1, 0.36, 1),
+    box-shadow 0.35s cubic-bezier(0.22, 1, 0.36, 1),
+    border-color 0.2s ease;
+  will-change: transform;
+}
+.spring-hover:hover {
+  transform: translateY(-2px) scale(1.005);
+}
+@media (prefers-reduced-motion: reduce) {
+  .spring-hover,
+  .block-tile,
+  .block-grid > *,
+  .block-shimmer::before {
+    transition: none !important;
+    animation: none !important;
+    transform: none !important;
+  }
+}
+
+/* Soft glow on hover for primary CTAs */
+.glow-primary:hover {
+  box-shadow: 0 10px 30px -8px hsl(211 100% 50% / 0.55);
+}
+
+/* Subtle pulse — used for live/highlight signals (trust badges, "new" tags) */
+@keyframes subtle-pulse {
+  0%, 100% { opacity: 1; }
+  50%      { opacity: 0.7; }
+}
+.animate-subtle-pulse {
+  animation: subtle-pulse 2.4s ease-in-out infinite;
+}
+
+/* Blog post body — markdown output */
+.blog-prose {
+  @apply text-base sm:text-lg leading-relaxed;
+}
+.blog-prose h1 {
+  @apply text-3xl sm:text-4xl font-bold tracking-tight mt-12 mb-4;
+}
+.blog-prose h2 {
+  @apply text-2xl sm:text-3xl font-bold tracking-tight mt-12 mb-4;
+}
+.blog-prose h3 {
+  @apply text-xl sm:text-2xl font-semibold tracking-tight mt-8 mb-3;
+}
+.blog-prose p {
+  @apply my-5 text-foreground/90 leading-relaxed;
+}
+.blog-prose a {
+  @apply text-primary underline underline-offset-2 hover:no-underline;
+}
+.blog-prose ul {
+  @apply my-5 ml-6 list-disc space-y-2;
+}
+.blog-prose ol {
+  @apply my-5 ml-6 list-decimal space-y-2;
+}
+.blog-prose li {
+  @apply leading-relaxed;
+}
+.blog-prose strong {
+  @apply font-semibold text-foreground;
+}
+.blog-prose blockquote {
+  @apply border-l-4 border-primary pl-4 italic text-muted-foreground my-6;
+}
+.blog-prose hr {
+  @apply border-t my-10;
+}
+.blog-prose table {
+  @apply w-full border-collapse my-6 text-sm;
+}
+.blog-prose th,
+.blog-prose td {
+  @apply border px-3 py-2 text-left;
+}
+.blog-prose th {
+  @apply bg-muted font-semibold;
+}
+.blog-prose code {
+  @apply rounded bg-muted px-1.5 py-0.5 text-sm font-mono;
+}

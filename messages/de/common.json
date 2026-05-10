@@ -1,0 +1,368 @@
+{
+  "header": {
+    "brand": "Block Out!",
+    "navigation": [
+      {
+        "name": "Startseite",
+        "href": "/"
+      },
+      {
+        "name": "Levels",
+        "href": "/level/"
+      },
+      {
+        "name": "Download",
+        "href": "/download/"
+      },
+      {
+        "name": "Über uns",
+        "href": "/about/"
+      }
+    ]
+  },
+  "hero": {
+    "badge": "Vollständige Durchgangsanleitung",
+    "title": "Löse jedes Block Out! Level mit einem sauberen Video-Durchgang",
+    "description": "Suchen Sie nach dem Levelnummer oder durchsuchen Sie die vollständige Liste. Jede Seite hat ein 16:9-Video, eine Schwierigkeitsbewertung, Tipps und eine FAQ — so können Sie das Level beenden, anstatt nach der Lösung zu suchen.",
+    "levelPlaceholder": "Eingabe einer Levelnummer",
+    "viewSolution": "Lösung anzeigen",
+    "viewAllLevels": "Alle Levels durchsehen",
+    "downloadGame": "Spiel herunterladen",
+    "statLevels": "Abgedeitete Levels",
+    "statVideos": "Durchgänge",
+    "statLanguages": "Sprachen"
+  },
+  "footer": {
+    "tagline": "Unabhängiger Durchgangsleitfaden für Block Out!, das Farbsortierpuzzle von Grand Games.",
+    "links": {
+      "about": "Über uns",
+      "privacy": "Datenschutz",
+      "contact": "Kontakt",
+      "social": "Soziale Medien"
+    },
+    "contact": {
+      "email": "contact@blockout.cc"
+    },
+    "copyrightSuffix": "Alle Rechte vorbehalten.",
+    "disclaimer": "{game} Guide ist ein unabhängiger fanmäßiger Ressourcenleiter und wird weder von {developer} unterstützt, verabschiedet noch gefördert. Alle Marken sind Eigentum ihrer jeweiligen Besitzer."
+  },
+  "faq": {
+    "title": "Block Out! Häufig gestellte Fragen",
+    "subtitle": "Alles, was neue Spieler wissen wollen, bevor sie sich verlieben.",
+    "questions": [
+      {
+        "question": "Was ist Block Out! und wie spielt man?",
+        "answer": "Block Out! ist ein Farb-Sortier-Puzzle von Grand Games. Du schiebst farbige Blöcke über eine Brettfläche, sodass jeder Block durch das Tor seiner passenden Farbe ausgeht. Der Herausforderung liegt die Reihenfolge: Wenn du den falschen Block zuerst auswählst, werden die übrigen hinter ihm verfangen."
+      },
+      {
+        "question": "Wo kann ich Block Out! herunterladen?",
+        "answer": "Block Out! ist kostenlos im App Store und Google Play. Suche nach 'Block Out Farb-Sortier-Puzzle' oder nutze die Download-Buttons auf dieser Seite."
+      },
+      {
+        "question": "Ist Block Out! kostenlos zum Spielen?",
+        "answer": "Ja — das Spiel ist kostenlos zum Herunterladen. Es gibt optional in-app-Käufe für Hinweise und eine werbefreie Version, aber der vollständige Level-Set kann ohne Zahlen bezahlt werden."
+      },
+      {
+        "question": "Wie unterscheidet sich diese Seite von den in-Spiel-Hinweisen?",
+        "answer": "In-Spiel-Hinweise geben üblicherweise nur einen Schritt zu einem Mal preis und kosten Münzen. Diese Seite zeigt die gesamte Reihenfolge in einem kurzen Video an und fügt schriftliche Tipps hinzu, damit du verstehst, warum die Reihenfolge funktioniert — nützlich, wenn das nächste Level eine ähnliche Form hat."
+      },
+      {
+        "question": "Wie viele Levels gibt es?",
+        "answer": "Grand Games fügt mit jeder Aktualisierung neue Levels hinzu. Wir verfolgen die neueste öffentlich veröffentlichte Sammlung auf der Seitenleiste zu den Levels; wenn eine Zahl fehlt, bedeutet das, dass wir noch keinen Video-Tutorial für sie erstellt haben."
+      },
+      {
+        "question": "Kann ich Block Out! offline spielen?",
+        "answer": "Ja. Das Kernpuzzle funktioniert ohne Internetverbindung. Eine Verbindung ist nur erforderlich für Werbung, tägliche Herausforderungen und Ranglisten."
+      },
+      {
+        "question": "Wie kann ich besser in Block Out! werden?",
+        "answer": "Bevor du einen Block berührst, schaue dir die Tore an. Der Weg jedes Teils wird von den anderen um ihn herum begrenzt, also ist der einfachste Schritt nicht immer der richtige erste Schritt. Plan drei Schritte vor und dann komme zu einem Entschluss."
+      },
+      {
+        "question": "Ist dies eine offizielle Grand Games-Website?",
+        "answer": "Nein. Dies ist ein unabhängiges, fanmäßiger Leitfaden zur Seite. Wir sind nicht mit Grand Games verbunden und der Spielname und die Assets gehören dem Entwickler."
+      }
+    ]
+  },
+  "features": {
+    "title": "Warum Sie diesen Leitfaden verwenden sollten",
+    "subtitle": "Ein konzentriertes Referenzwerk für Spieler von Block Out! — saubere Videos, echte Tipps und keine Fülltexte.",
+    "list": [
+      {
+        "title": "16:9 Video-Leitfäden",
+        "description": "Jedes Level hat ein ordentlich formatiertes Video, das auf Smartphones, Tablets und Desktops sauber abgespielt wird. Keine Verzerrung, keine Kürzung."
+      },
+      {
+        "title": "Tipps, die den Reihenfolgen erklären",
+        "description": "Bereits über die bloße Anzeige der Bewegungen hinaus erklärt jede Levelseite, warum die Reihenfolge funktioniert, sodass Sie die Strategie auf ähnlichen Brettstellungen anpassen können."
+      },
+      {
+        "title": "Schwierigkeitsbewertungen",
+        "description": "Von einfach bis super-schwer, gemessen an Community-Feedback. Finden Sie heraus, bevor Sie beginnen, ob Sie eine 30-Sekunden-Lösung oder ein 5-Minuten-Kopfschütteln erwarten."
+      },
+      {
+        "title": "Nutzerfreundliche Navigation für Mobilgeräte",
+        "description": "Klickbare Level-Steine für Touch-Geräte, festhaltende Registerkarten nach Gruppen und schnelle vorherige/nächste-Sprünge, damit Sie Ihren Platz nicht verlieren."
+      }
+    ]
+  },
+  "howToUse": {
+    "title": "Wie man Block Out! spielt!",
+    "subtitle": "Drei Regeln. Dann ist es um die Reihenfolge der Bewegungen geht.",
+    "stepLabel": "Schritt",
+    "steps": [
+      {
+        "title": "Bewege Blöcke in Richtung passender Tore",
+        "description": "Jeder farbige Block muss durch das Tor seiner Farbe verlaufen. Ziehe den Block in beliebiger Richtung; er bewegt sich, bis er an ein Hindernis oder die Wand stößt."
+      },
+      {
+        "title": "Plan die Reihenfolge vor dem Verschieben",
+        "description": "Der falsche Block zuerst blockiert die anderen. Schau dir die Tore an und berechne, welches Stück zuletzt verlaufen kann — arbeite von dort rückwärts."
+      },
+      {
+        "title": "Verwende Undo, dann commit",
+        "description": "Undo ist unbeschränkt und kostenlos. Verwende es, um eine Reihenfolge zu testen, aber sobald du die Reihenfolge kennst, spiele sie sauber durch — das Vergnügen liegt im Lösen, nicht in der Versuchs-und-Fehlversuche-Methode."
+      }
+    ]
+  },
+  "home": {
+    "meta": {
+      "title": "Block Out! Walkthrough — Alle {totalLevels} Levels mit Video-Lösungen und Tipps",
+      "description": "Steckst du an einem Block Out! Level fest? Erhalte eine saubere 16:9-Video-Durchgangsbeschreibung, Schwierigkeitsbewertung und Schritt-für-Schritt-Tipps für jedes Level des Farbordnungspuzzles von Grand Games."
+    }
+  },
+  "appDownload": {
+    "meta": {
+      "title": "Download Block Out! — Farbsortierpuzzle von Grand Games",
+      "description": "Herunterladen Sie Block Out!, das kostenlose Farbsortierpuzzle von Grand Games, für iOS oder Android."
+    },
+    "title": "Download Block Out!",
+    "subtitle": "Kostenlos auf iOS und Android. Veröffentlicht von Grand Games.",
+    "developerLine": "Veröffentlicht von {developer}",
+    "platforms": {
+      "ios": {
+        "name": "iOS",
+        "description": "iPhone & iPad",
+        "tagline": "Herunterladen auf der"
+      },
+      "android": {
+        "name": "Android",
+        "description": "Handys & Tablets",
+        "tagline": "Es finden Sie auf"
+      }
+    },
+    "buttons": {
+      "download": "Herunterladen"
+    }
+  },
+  "download": {
+    "meta": {
+      "title": "Download Block Out! — Kostenlose Farbsortierpuzzle für iOS & Android",
+      "description": "Herunterladen Sie Block Out!, das kostenlose Farbsortierpuzzle von Grand Games. Verfügbar im App Store und auf Google Play."
+    },
+    "title": "Download Block Out!",
+    "subtitle": "Kostenloses Farbsortierpuzzle von Grand Games.",
+    "description": {
+      "main": "Block Out! ist ein Schieben-und-Sortieren-Puzzle, bei dem Sie gefärbte Blöcke an Tore ihrer passenden Farbe leiten. Die frühen Level lehren das Schiebemechanik; die späteren machen den Reihenfolge der Bewegungen zum ganzen Herausforderung.",
+      "gameplay": "Einfache Steuerung, tiefgreende Planung — kurze Levels, die Sie in einer Reihe spielen können, schwierigere Levels wert für eine 10-Minuten-Lösung."
+    },
+    "features": {
+      "title": "Was macht das Spiel aus",
+      "list": [
+        {
+          "title": "Ein-Finger-Steuerung",
+          "description": "Führen Sie einen Block in beliebiger Richtung und er gleitet, bis er an eine Wand oder ein anderes Hindernis stößt. Das ist die gesamte Steuerungsstrategie."
+        },
+        {
+          "title": "Reihenfolge-ratend Puzzles",
+          "description": "Das gleiche Brett hat viele mögliche Bewegungssequenzen, aber nur eine oder zwei korrekte Anfangspositionen. Versuchs-und-Fehlversuche funktionieren auf frühen Levels; Planung funktioniert auf jedem Level."
+        },
+        {
+          "title": "Kurze Sitzungen",
+          "description": "Die meisten Levels lösen sich in weniger als 60 Sekunden, sobald Sie den Muster erkennen, sodass es leicht ist, ein Level zwischen Treffen oder während der Fahrt zu spielen."
+        },
+        {
+          "title": "Fähigkeit, nicht Sterne",
+          "description": "Kein Energiemeter, kein täglicher Begrenzung auf dem Hauptlevelset — Sie können jeden Level erneut spielen, um eine schnelleren Lösung zu verfolgen."
+        }
+      ]
+    },
+    "howToPlay": {
+      "title": "Wie man spielt",
+      "steps": [
+        "Führen Sie einen gefärbten Block in Richtung seines passenden Tors.",
+        "Jeder Block gleitet, bis er an etwas stößt — planen Sie um Hindernisse herum.",
+        "Leeren Sie alle Blöcke, um das Level zu beenden."
+      ]
+    },
+    "tips": {
+      "title": "Anfängertipps",
+      "list": [
+        "Betrachten Sie zunächst die Tore. Der Block, dessen Tor am engsten eingeschlossen ist, muss normalerweise als Erster gehen.",
+        "Wenn ein Block nur eine mögliche Ausgangsrichtung hat, lassen Sie diese Richtung offen, bis Sie bereit sind, sie zu nutzen.",
+        "Verwenden Sie Undo, um Ideen auszuprobieren — es gibt keinen Strafpunkt."
+      ]
+    },
+    "closing": "Kostenlos herunterladbar, schnell zu lernen, tief genug, um immer wieder zurückzukehren.",
+    "buttons": {
+      "download": "Herunterladen",
+      "playStore": "Auf Google Play erhalten",
+      "appStore": "Im App Store herunterladen"
+    }
+  },
+  "level": {
+    "meta": {
+      "title": "Block Out! Level Solutions — Video walkthroughs für alle 1 bis {totalLevels} Levels",
+      "description": "Vollständiger Index der Block Out! Levels mit Video walkthroughs, Schwierigkeitsbewertungen und Tipps. Wählen Sie ein Level, um direkt zu seiner Lösung zu springen."
+    },
+    "title": "Block Out! Level Index",
+    "subtitle": "Jedes Level wird kartiert, nach Schwierigkeit rangiert und mit einem sauberen Video walkthrough verbunden.",
+    "highlightsTitle": "Gefeiertes walkthroughs",
+    "highlightsSubtitle": "Springen Sie direkt zu den Meilensteinlevels, die die meisten Spieler fragen.",
+    "viewAll": "Alle Levels durchsehen",
+    "levelLabel": "Level",
+    "solutionTitle": "Block Out! Level {level} — Video & Tipps",
+    "solutionDescription": "Beobachten Sie das Video walkthrough für Block Out! Level {level}, mit Schwierigkeitsbewertung, Tipps und Antworten auf häufig gestellte Fragen.",
+    "prevLevel": "Vorheriges",
+    "nextLevel": "Nächstes",
+    "levelList": "Alle Levels",
+    "referenceTime": "Referenz-Fertigstellungszeit",
+    "minutes": "m",
+    "seconds": "s",
+    "tipsTitle": "Tipps für dieses Level",
+    "faqTitle": "Häufig gestellte Fragen",
+    "relatedTitle": "Verwandte Levels",
+    "gameInfoTitle": "Über das Spiel",
+    "infoGame": "Spiel",
+    "infoDeveloper": "Entwickler",
+    "infoPlatform": "Plattform",
+    "infoGenre": "Genretyp",
+    "difficultyLegend": "Schwierigkeit",
+    "difficultyLabels": {
+      "easy": "Leicht",
+      "medium": "Mittel",
+      "hard": "Schwer",
+      "expert": "Experte",
+      "super-hard": "Super schwer"
+    },
+    "batchNote": "Level {level} wird im Level {batch} Batch walkthrough behandelt — scrollen Sie durch das Video, um Ihr Level zu finden.",
+    "noVideoNote": "Ein spezifisches Video walkthrough für dieses Level wurde noch nicht veröffentlicht. Nutzen Sie die Tipps unten, um Ihre Züge zu planen.",
+    "superHardTitle": "Super Hard Variante",
+    "superHardNote": "Einige Levels haben auch eine Super Hard Version mit dem gleichen Nummern — ein strengerer Brettstand mit weniger Raum für Planung.",
+    "watchSuperHard": "Auf YouTube ansehen"
+  },
+  "about": {
+    "title": "Über diese Seite",
+    "subtitle": "Ein unabhängiger Leitfaden-Ressourcen für Block Out! von Grand Games.",
+    "content": {
+      "introduction": {
+        "title": "Was diese Seite ist",
+        "text": "blockout.cc ist eine unabhängige, fan-moderierte Leitfaden-Website. Sie existiert nur dafür, um Block Out! Spielern ein sauberes Lösungsangebot zu bieten, wenn sie an einem Level hängen — keine Verkaufsprozesse, kein Hinweis-Koinen-Sperren, und keine Scrollen durch fünf Werbungsbilder, um einen 30-Sekunden-Video-Tipp zu finden."
+      },
+      "gameInfo": {
+        "title": "Über das Spiel",
+        "text": "Block Out! ist ein Farbordnung-Rätsel von Grand Games für iOS und Android. Du schiebst farbige Blöcke über eine Brettfläche, sodass jeder Block durch die Tür seines passenden Farben-Blocks geht. Levels beginnen als sanfte Einführungen und werden in mehrstufige Planungsrätsel umgewandelt, bei denen der Reihenfolge der Bewegungen alles entscheidet."
+      },
+      "features": {
+        "title": "Was du hier findest",
+        "items": [
+          "Ein 16:9-Video-Leitfaden für jedes Level, das wir abgedeckt haben",
+          "Schwierigkeitsgrad und eine schriftliche Beschreibung pro Level",
+          "3-5 schriftliche Tipps, die den Hintergrund erklären, nicht nur die Lösung",
+          "Eine FAQ für häufig gestellte Fragen auf jeder Levelseite",
+          "Schnelle Vorher-Nachher-Navigation und ein klebendes Gruppenwähler"
+        ]
+      },
+      "howToPlay": {
+        "title": "Vorgeschlagene Arbeitsablauf",
+        "items": [
+          "Beim ersten Mal das Video einmal im vollen Tempo ansehen, um die Lösung zu sehen",
+          "Die Tipps vor deinem zweiten Versuch lesen — sie erklären den Hintergrund",
+          "Wenn du immer noch hängst, das Video auf 0.5x langsamer für die ersten fünf Bewegungen anhalten"
+        ]
+      },
+      "tips": {
+        "title": "Warum wir diesen Leitfaden erstellt haben",
+        "items": [
+          "Die meisten bestehenden Anleitungen sind mit Werbung und kurzen Videos gefüllt, hinter denen 2-Minuten-Einführungen folgen",
+          "Anleitungen auf anderen Seiten sagen dir zu, 'vorwegzudenken', ohne den Hintergrund zu erklären",
+          "Wir haben einen Leitfaden erstellt, der schnell auf einem Smartphone lädt und deinen Zeitwert respektiert"
+        ]
+      },
+      "disclaimer": {
+        "title": "Haftungsausschluss",
+        "text": "blockout.cc ist nicht mit Grand Games verbunden, von ihnen genehmigt oder durch sie unterstützt. Block Out! und alle verwandten Spiel-Assets sind Marken von Grand Games. Diese Seite ist ein fan-moderierter Referenz; für offizielle Informationen besuche die Entwicklerkanäle."
+      },
+      "contact": {
+        "title": "Kontakt",
+        "text": "Vorschläge, fehlende Levels oder Korrekturen — kontaktiere uns:",
+        "email": "contact@blockout.cc"
+      }
+    }
+  },
+  "privacy": {
+    "title": "Datenschutzrichtlinie",
+    "subtitle": "Was wir sammeln und nicht sammeln.",
+    "lastUpdated": "Letzte Aktualisierung: 2026-05",
+    "content": {
+      "introduction": {
+        "title": "Der kurze Überblick",
+        "text": "blockout.cc ist eine statische Website. Wir bitten dich nicht, dich anzumelden, wir führen keine Datenbank und speichern nichts, was du eingibst. Das einzige von uns gesammelte Daten sind die standardmäßigen Anfrageprotokolle, die dein Browser an jede Web-Server sendet, sowie die unten genannten Analyse- und Werbetracking-Systeme."
+      },
+      "dataCollection": {
+        "title": "Was wir möglicherweise sammeln",
+        "text": "Durch standardmäßige Webinfrastruktur und optionalen Drittanbieterwerkzeugen:",
+        "items": [
+          "IP-Adresse und User-Agent (Anfrageprotokolle, zur Sicherheit und Aggregationsstatistiken)",
+          "Anonyme Seitenansichtszahlen durch privatschutzfreundliche Analyse, wenn aktiviert",
+          "Standardwerbendaten durch Google AdSense, falls Werbung geladen wird — siehe die Datenschutzerklärung von Google für Details"
+        ],
+        "nonCollected": {
+          "title": "Was wir nicht sammeln",
+          "text": "Wir sammeln explizit nicht:",
+          "items": [
+            "Kontodaten — es gibt kein Anmelden",
+            "Jeden Text, den du auf der Seite eingibst (der Level-Sprung-Input läuft vollständig in deinem Browser)",
+            "Personenidentifizierende Informationen außer denen, die dein Browser an jede Web-Server sendet"
+          ]
+        }
+      },
+      "dataUsage": {
+        "title": "Wie Daten verwendet werden",
+        "text": "Begrenzt auf das Betreiben der Website:",
+        "items": [
+          "Abuse erkennen und aggressive Crawler mit Rate-Limiting stoppen",
+          "Seitenbeliebigkeit aggregieren, um die zu abdeckenden Levels zu bestimmen",
+          "Wo AdSense aktiviert ist, kontextuelle Werbung anzeigen (kein verhaltensbasiertes Werbezielung durch uns)"
+        ]
+      },
+      "dataSecurity": {
+        "title": "Datenschutz",
+        "text": "Die Website wird als statisches HTML/CSS/JS über HTTPS serviert. Es gibt keine Serverseitige Datenbank, die gebrochen werden kann."
+      },
+      "userRights": {
+        "title": "Deine Rechte",
+        "text": "Du kannst ohne Identifizierung surfen. Um Werbeverfolgung auszuschalten, nutze den Standard-Werbe-Blocker oder den Do Not Track-Signal deines Browsers oder besuche die Werbeseinstellungen bei Google."
+      },
+      "contact": {
+        "title": "Kontakt",
+        "text": "Fragen zur Datenschutzrichtlinie:",
+        "email": "contact@blockout.cc"
+      }
+    }
+  },
+  "companyInfo": {
+    "title": "Über Block Out!",
+    "subtitle": "Ein Farb-Sortier-Puzzle von Grand Games.",
+    "sections": {
+      "background": {
+        "title": "Spielhintergrund",
+        "content": "Block Out! wird veröffentlicht von Grand Games, einem Mobilspiele-Studio, das sich auf kurzsitzende Puzzelspiele konzentriert."
+      },
+      "infrastructure": {
+        "title": "Genre",
+        "content": "Farbsortier-Sliding-Puzzle. Block Out! gehört zur gleichen Spielgruppe wie block-jam und Farb-Sortier-Spiele, verwendet aber eine deterministische, level-basierte Fortschrittsstruktur anstelle von zufälligen Spielfeldern."
+      }
+    }
+  }
+}

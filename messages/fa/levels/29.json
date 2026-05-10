@@ -1,0 +1,28 @@
+{
+  "description": "A super-hard level designed to push your spatial reasoning. Expect to retry several times — and use the video to confirm the optimal opening.",
+  "tips": [
+    "Pause the video frame-by-frame on the first 5 moves — those define the entire solution.",
+    "Identify the 'lock' piece (the one that traps everything) and figure out when it can move.",
+    "Many super-hard levels need a piece to traverse the entire board twice. Plan the round trip.",
+    "If you get stuck halfway through, the failure is usually in moves 2 or 3, not move 10.",
+    "Treat each color as a thread — solve them in dependency order, not visual order."
+  ],
+  "faq": [
+    {
+      "q": "Why does this level look easier in the video than in my game?",
+      "a": "Block Out level layouts are deterministic per level number. If your board looks different, double-check that you're on the same level — Daily Challenge and Event boards reuse level numbers."
+    },
+    {
+      "q": "How do I rotate or flip pieces?",
+      "a": "Block Out doesn't support rotation. The shape you see is the shape you have to slide. Plan around the orientation."
+    },
+    {
+      "q": "Can I undo a wrong move?",
+      "a": "Yes — tap the undo button after a misstep. Each level allows unlimited undos until you complete it. There's no penalty."
+    },
+    {
+      "q": "What if I'm running out of moves?",
+      "a": "Restart the level instead of burning hints. Most levels can be solved in well under the move limit once you know the order."
+    }
+  ]
+}

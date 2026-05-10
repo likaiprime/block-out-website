@@ -1,0 +1,28 @@
+# Cloudflare Pages redirects
+# 200 = internal rewrite (URL bar stays clean)
+# 301 = permanent redirect (URL bar updates)
+
+# /en/* → / (301 redirect) — must come BEFORE the 200 rewrites below
+/en/   /   301
+/en/level/   /level/   301
+/en/level/*  /level/:splat   301
+/en/*  /:splat   301
+
+# No-trailing-slash → add slash (prevents 404 on bare paths)
+/level /level/ 301
+/about /about/ 301
+/blog /blog/ 301
+/download /download/ 301
+/privacy /privacy/ 301
+/app /app/ 301
+
+# Root → English content (200 internal rewrite)
+/   /en/  200
+/about/   /en/about/  200
+/blog/   /en/blog/  200
+/blog/*   /en/blog/:splat  200
+/download/   /en/download/  200
+/level/   /en/level/  200
+/level/*   /en/level/:splat  200
+/privacy/   /en/privacy/  200
+/app/   /en/app/  200

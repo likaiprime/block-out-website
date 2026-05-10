@@ -1,0 +1,27 @@
+{
+  "description": "An introductory puzzle that teaches you the basic sliding mechanics. Take your time to understand how blocks move through the gates.",
+  "tips": [
+    "Identify each block's color and find the matching gate before you move anything.",
+    "Move smaller blocks first to free up space for larger pieces.",
+    "Watch for blocks that share an exit — those usually need to leave in a specific order.",
+    "If you get stuck, undo and retrace the gate sequence from the bottom up."
+  ],
+  "faq": [
+    {
+      "q": "Why does this level look easier in the video than in my game?",
+      "a": "Block Out level layouts are deterministic per level number. If your board looks different, double-check that you're on the same level — Daily Challenge and Event boards reuse level numbers."
+    },
+    {
+      "q": "How do I rotate or flip pieces?",
+      "a": "Block Out doesn't support rotation. The shape you see is the shape you have to slide. Plan around the orientation."
+    },
+    {
+      "q": "Can I undo a wrong move?",
+      "a": "Yes — tap the undo button after a misstep. Each level allows unlimited undos until you complete it. There's no penalty."
+    },
+    {
+      "q": "What if I'm running out of moves?",
+      "a": "Restart the level instead of burning hints. Most levels can be solved in well under the move limit once you know the order."
+    }
+  ]
+}
