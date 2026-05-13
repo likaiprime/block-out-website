@@ -35,10 +35,13 @@
   "footer": {
     "tagline": "獨立攻略網站，提供《Block Out!》——由Grand Games開發的色彩排序謎題遊戲之攻略。",
     "links": {
-      "about": "關於",
-      "privacy": "隱私權",
-      "contact": "聯絡我們",
-      "social": "社群"
+      "about": "??",
+      "privacy": "??",
+      "contact": "??",
+      "social": "社群",
+      "terms": "??",
+      "cookies": "Cookie",
+      "disclaimer": "????"
     },
     "contact": {
       "email": "contact@blockout.cc"

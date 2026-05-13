@@ -35,10 +35,13 @@
   "footer": {
     "tagline": "ພິເສດທາງລົ້ມທີ່ບໍ່ຕອນການຂຽວຄື Block Out!, ຕຳຫຼວດປະສຸບຜູ້ປັບປຸງ Grand Games.",
     "links": {
-      "about": "ພິເສດ",
-      "privacy": "ຕົວລາ",
-      "contact": "ຕຳແຫຼງການຕຳຫຼວດ",
-      "social": "ສະຖາປະຊາຊົນ"
+      "about": "???????",
+      "privacy": "???????????????",
+      "contact": "??????",
+      "social": "ສະຖາປະຊາຊົນ",
+      "terms": "????????",
+      "cookies": "Cookie",
+      "disclaimer": "???????????????????"
     },
     "contact": {
       "email": "contact@blockout.cc"

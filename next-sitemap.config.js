@@ -18,6 +18,17 @@ const LOCALES = [
   "lo",
 ];
 
+const AI_TRAINING_BOTS = [
+  "GPTBot",
+  "CCBot",
+  "ClaudeBot",
+  "Google-Extended",
+  "Bytespider",
+  "Amazonbot",
+  "Applebot-Extended",
+  "meta-externalagent",
+];
+
 module.exports = {
   siteUrl: SITE_URL,
   generateRobotsTxt: true,
@@ -36,6 +47,10 @@ module.exports = {
         userAgent: "*",
         allow: "/",
       },
+      ...AI_TRAINING_BOTS.map((userAgent) => ({
+        userAgent,
+        disallow: "/",
+      })),
     ],
   },
   transform: async (config, path) => {

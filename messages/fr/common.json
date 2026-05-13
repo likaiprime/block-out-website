@@ -35,10 +35,13 @@
   "footer": {
     "tagline": "Site de guide indépendant pour Block Out!, le puzzle de tri de couleurs par Grand Games.",
     "links": {
-      "about": "À propos",
-      "privacy": "Confidentialité",
+      "about": "A propos",
+      "privacy": "Confidentialite",
       "contact": "Contact",
-      "social": "Réseaux sociaux"
+      "social": "Réseaux sociaux",
+      "terms": "Conditions",
+      "cookies": "Cookies",
+      "disclaimer": "Avertissement"
     },
     "contact": {
       "email": "contact@blockout.cc"

@@ -15,11 +15,11 @@ interface Props {
 export async function generateMetadata({ params }: Props): Promise<Metadata> {
   const { lang } = await params;
   setRequestLocale(lang);
-  return getLegalMetadata(lang, "privacy");
+  return getLegalMetadata(lang, "terms");
 }
 
-export default async function PrivacyPage({ params }: Props) {
+export default async function TermsPage({ params }: Props) {
   const { lang } = await params;
   setRequestLocale(lang);
-  return <LegalPage content={getLegalPageContent(lang, "privacy")} />;
+  return <LegalPage content={getLegalPageContent(lang, "terms")} />;
 }

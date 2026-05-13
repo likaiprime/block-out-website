@@ -35,10 +35,13 @@
   "footer": {
     "tagline": "Sito indipendente di guida per Block Out!, il puzzle di ordinamento dei colori da parte di Grand Games.",
     "links": {
-      "about": "Informazioni",
+      "about": "Chi siamo",
       "privacy": "Privacy",
       "contact": "Contatti",
-      "social": "Social"
+      "social": "Social",
+      "terms": "Termini",
+      "cookies": "Cookie",
+      "disclaimer": "Disclaimer"
     },
     "contact": {
       "email": "contatto@blockout.cc"

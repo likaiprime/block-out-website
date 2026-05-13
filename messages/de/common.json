@@ -35,10 +35,13 @@
   "footer": {
     "tagline": "Unabhängiger Durchgangsleitfaden für Block Out!, das Farbsortierpuzzle von Grand Games.",
     "links": {
-      "about": "Über uns",
+      "about": "Uber uns",
       "privacy": "Datenschutz",
       "contact": "Kontakt",
-      "social": "Soziale Medien"
+      "social": "Soziale Medien",
+      "terms": "Nutzungsbedingungen",
+      "cookies": "Cookies",
+      "disclaimer": "Haftungsausschluss"
     },
     "contact": {
       "email": "contact@blockout.cc"

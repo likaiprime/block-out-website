@@ -1,7 +1,7 @@
 "use client";
 
 import { Mail } from "lucide-react";
-import { useTranslations, useLocale } from "next-intl";
+import { useTranslations } from "next-intl";
 import { Link } from "@/i18n/routing";
 
 type NavItem = { name: string; href: string };
@@ -18,7 +18,6 @@ const PALETTE = [
 export function Footer() {
   const t = useTranslations("footer");
   const tHeader = useTranslations("header");
-  const lang = useLocale();
   const email =
     process.env.NEXT_PUBLIC_CONTACT_EMAIL || "contact@blockout.cc";
   const gameName = process.env.NEXT_PUBLIC_GAME_NAME || "Block Out!";
@@ -27,6 +26,14 @@ export function Footer() {
 
   const headerNav = tHeader.raw("navigation") as ReadonlyArray<NavItem>;
   const levelsLabel = headerNav[1]?.name ?? "Levels";
+  const legalLinks = [
+    { href: "/about/", label: t("links.about") },
+    { href: "/contact/", label: t("links.contact") },
+    { href: "/privacy/", label: t("links.privacy") },
+    { href: "/terms/", label: t("links.terms") },
+    { href: "/cookies/", label: t("links.cookies") },
+    { href: "/disclaimer/", label: t("links.disclaimer") },
+  ];
 
   return (
     <footer className="relative border-t bg-card mt-auto">
@@ -80,18 +87,15 @@ export function Footer() {
               {t("links.about")}
             </h3>
             <nav className="flex flex-col gap-2.5 text-sm">
-              <Link
-                href="/about/"
-                className="text-muted-foreground hover:text-foreground transition-colors"
-              >
-                {t("links.about")}
-              </Link>
-              <Link
-                href="/privacy/"
-                className="text-muted-foreground hover:text-foreground transition-colors"
-              >
-                {t("links.privacy")}
-              </Link>
+              {legalLinks.map((link) => (
+                <Link
+                  key={link.href}
+                  href={link.href}
+                  className="text-muted-foreground hover:text-foreground transition-colors"
+                >
+                  {link.label}
+                </Link>
+              ))}
               <Link
                 href="/level/"
                 className="text-muted-foreground hover:text-foreground transition-colors"

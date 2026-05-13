@@ -35,10 +35,13 @@
   "footer": {
     "tagline": "Grand Games によるカラーソートパズル『Block Out!』の独立した攻略サイトです。",
     "links": {
-      "about": "概要",
-      "privacy": "プライバシーポリシー",
-      "contact": "お問い合わせ",
-      "social": "SNS"
+      "about": "??",
+      "privacy": "??????",
+      "contact": "??????",
+      "social": "SNS",
+      "terms": "????",
+      "cookies": "Cookie",
+      "disclaimer": "????"
     },
     "contact": {
       "email": "contact@blockout.cc"

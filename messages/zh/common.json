@@ -35,10 +35,13 @@
   "footer": {
     "tagline": "Independent walkthrough site for Block Out!, the color-sort puzzle by Grand Games.",
     "links": {
-      "about": "About",
-      "privacy": "Privacy",
-      "contact": "Contact",
-      "social": "Social"
+      "about": "??",
+      "privacy": "??",
+      "contact": "??",
+      "social": "Social",
+      "terms": "??",
+      "cookies": "Cookie",
+      "disclaimer": "????"
     },
     "contact": {
       "email": "contact@blockout.cc"

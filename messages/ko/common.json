@@ -35,10 +35,13 @@
   "footer": {
     "tagline": "Block Out!의 색상 정리 퍼즐을 위한 독립적인 가이드 사이트입니다.",
     "links": {
-      "about": "소개",
-      "privacy": "개인정보 보호",
-      "contact": "연락처",
-      "social": "사회적 미디어"
+      "about": "??",
+      "privacy": "????",
+      "contact": "??",
+      "social": "사회적 미디어",
+      "terms": "??",
+      "cookies": "??",
+      "disclaimer": "?? ??"
     },
     "contact": {
       "email": "contact@blockout.cc"

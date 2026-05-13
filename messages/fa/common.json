@@ -35,10 +35,13 @@
   "footer": {
     "tagline": "سایت راهنمای مستقل برای Block Out!, پازل تنظیم رنگ‌ها از Grand Games.",
     "links": {
-      "about": "درباره ما",
-      "privacy": "حریم شخصی",
-      "contact": "تماس",
-      "social": "اجتماعی"
+      "about": "??????",
+      "privacy": "???? ?????",
+      "contact": "????",
+      "social": "اجتماعی",
+      "terms": "?????",
+      "cookies": "???????",
+      "disclaimer": "??? ???????"
     },
     "contact": {
       "email": "contact@blockout.cc"

@@ -38,7 +38,10 @@
       "about": "Acerca de",
       "privacy": "Privacidad",
       "contact": "Contacto",
-      "social": "Redes Sociales"
+      "social": "Redes Sociales",
+      "terms": "Terminos",
+      "cookies": "Cookies",
+      "disclaimer": "Aviso legal"
     },
     "contact": {
       "email": "contact@blockout.cc"
