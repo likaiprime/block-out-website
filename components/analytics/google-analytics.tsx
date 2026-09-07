@@ -4,9 +4,9 @@ import { useEffect, useRef } from "react";
 import { usePathname } from "next/navigation";
 import Script from "next/script";
 
-function getMeasurementId(): string | null {
+function getMeasurementId(): string | undefined {
   const raw = process.env.NEXT_PUBLIC_GA_ID?.trim();
-  if (!raw || !/^G-[A-Z0-9]+$/i.test(raw)) return null;
+  if (!raw || !/^G-[A-Z0-9]+$/i.test(raw)) return undefined;
   return raw;
 }
 
@@ -25,7 +25,7 @@ export default function GoogleAnalytics() {
       isFirstPath.current = false;
       return;
     }
-    window.gtag?.("config", gaId, { page_path: pathname });
+    window.gtag?.("config", gaId, { page_path: pathname ?? undefined });
   }, [gaId, pathname]);
 
   if (!gaId) return null;
