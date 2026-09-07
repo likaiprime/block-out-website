@@ -1,11 +1,11 @@
 {
-  "description": "An advanced level with overlapping pieces and complex routing. Solving it cleanly often requires moving blocks out of the way and back.",
+  "description": "A challenging level with multiple block types and tight space. Wrong moves can box you in — visualize the full sequence first.",
   "tips": [
-    "Identify the choke point on the board and treat it as your bottleneck — sequence around it.",
-    "Some blocks must be moved twice: once to clear a path, then back to their gate.",
-    "Watch the video at 0.5x speed to catch micro-moves that look like one slide.",
-    "If two pieces have only one viable exit each, there's usually only one correct order.",
-    "Reset early if your first 4 moves don't match the optimal opening — you'll save time."
+    "Map out the full evacuation order for every gate before your first move.",
+    "Long pieces need a clear runway — clear horizontal or vertical space first.",
+    "If a block can only exit through one path, leave that path empty until the end.",
+    "Don't be afraid to backtrack a block one or two squares to unblock another.",
+    "Save the 'pivot' piece — the one in the densest corner — for last."
   ],
   "faq": [
     {

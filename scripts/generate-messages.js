@@ -189,17 +189,24 @@ function buildLevelFiles(lang) {
 }
 
 function main() {
+  const levelCount = JSON.parse(
+    fs.readFileSync(path.join(ROOT, "level", "level.json"), "utf8")
+  ).length;
+  const hasDictionaries = fs.existsSync(path.join(ROOT, "dictionaries", "en"));
+
   for (const lang of LOCALES) {
-    const common = buildCommon(lang);
-    const outDir = path.join(ROOT, "messages", lang);
-    ensureDir(outDir);
-    fs.writeFileSync(
-      path.join(outDir, "common.json"),
-      JSON.stringify(common, null, 2),
-      "utf8"
-    );
+    if (hasDictionaries) {
+      const common = buildCommon(lang);
+      const outDir = path.join(ROOT, "messages", lang);
+      ensureDir(outDir);
+      fs.writeFileSync(
+        path.join(outDir, "common.json"),
+        JSON.stringify(common, null, 2),
+        "utf8"
+      );
+    }
     buildLevelFiles(lang);
-    console.log(`✓ ${lang}: common.json + ${200} level files`);
+    console.log(`✓ ${lang}: common.json + ${levelCount} level files`);
   }
 }
 
