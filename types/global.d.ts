@@ -1,11 +1,12 @@
 interface Window {
   gtag: (
-    command: "config" | "event",
-    targetId: string,
+    command: "js" | "config" | "event" | "consent",
+    targetId: string | Date,
     config?: {
       page_path?: string;
-      [key: string]: any;
+      send_page_view?: boolean;
+      [key: string]: unknown;
     },
   ) => void;
-  dataLayer: any[];
+  dataLayer: unknown[];
 }
