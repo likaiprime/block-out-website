@@ -46,9 +46,9 @@ export function Hero() {
         <div className="absolute inset-x-0 bottom-0 h-40 bg-gradient-to-t from-background to-transparent" />
       </div>
 
-      <div className="grid gap-12 lg:grid-cols-[1.05fr_0.95fr] items-center">
+      <div className="grid gap-10 lg:gap-12 lg:grid-cols-[1.05fr_0.95fr] items-center">
         {/* Copy + CTA column */}
-        <div className="flex flex-col items-start text-left gap-6">
+        <div className="flex flex-col items-start text-left gap-6 order-1">
           <div className="flex flex-wrap items-center gap-2">
             <Badge accent="blue" icon={<Sparkles />}>
               {t("badge")}
@@ -71,7 +71,7 @@ export function Hero() {
           </p>
 
           <form
-            className="flex w-full max-w-xl items-stretch gap-2 mt-1"
+            className="flex w-full max-w-xl flex-col gap-2.5 sm:flex-row sm:items-stretch mt-1"
             onSubmit={(e) => {
               e.preventDefault();
               submit();
@@ -85,15 +85,15 @@ export function Hero() {
               onChange={handleLevelChange}
               min={1}
               max={maxLevel}
-              className="h-12 text-base rounded-2xl shadow-[inset_0_1px_0_hsl(0_0%_100%/0.4),inset_0_-2px_0_hsl(0_0%_0%/0.08)]"
+              className="h-12 min-h-11 text-base rounded-2xl shadow-[inset_0_1px_0_hsl(0_0%_100%/0.4),inset_0_-2px_0_hsl(0_0%_0%/0.08)]"
               aria-label={t("levelPlaceholder")}
             />
             <Button
               type="submit"
               size="lg"
-              className="gap-2 glow-primary rounded-2xl shadow-[inset_0_1px_0_hsl(0_0%_100%/0.3),inset_0_-3px_0_hsl(0_0%_0%/0.18)]"
+              className="h-12 min-h-11 w-full sm:w-auto gap-2 glow-primary rounded-2xl shadow-[inset_0_1px_0_hsl(0_0%_100%/0.3),inset_0_-3px_0_hsl(0_0%_0%/0.18)]"
             >
-              <span className="hidden sm:inline">{t("viewSolution")}</span>
+              {t("viewSolution")}
               <ArrowRight className="h-5 w-5" />
             </Button>
           </form>
@@ -110,15 +110,15 @@ export function Hero() {
             </Button>
           </div>
 
-          <dl className="mt-6 grid grid-cols-3 gap-6 sm:gap-10">
+          <dl className="mt-4 sm:mt-6 grid grid-cols-3 gap-3 sm:gap-10 w-full">
             <Stat label={t("statLevels")} value={maxLevel} accent="blue" />
             <Stat label={t("statVideos")} value={maxLevel} accent="orange" />
             <Stat label={t("statLanguages")} value={14} accent="purple" />
           </dl>
         </div>
 
-        {/* Block tower visual column — asymmetric, game-like composition */}
-        <div className="relative mx-auto w-full max-w-[440px]">
+        {/* Block tower — compact on phones so CTA stays above the fold */}
+        <div className="relative mx-auto w-full max-w-[440px] order-2 max-h-[min(52vw,240px)] sm:max-h-none">
           <BlockTower />
         </div>
       </div>
@@ -128,7 +128,7 @@ export function Hero() {
 
 function BlockTower() {
   return (
-    <div className="relative aspect-square w-full">
+    <div className="relative aspect-square w-full max-h-[inherit]">
       {/* Soft colored glow backdrop — replaces game-board grid for a screenshot showcase */}
       <div
         aria-hidden
@@ -242,7 +242,7 @@ function Stat({
     <div className="flex items-center gap-3">
       <span
         aria-hidden
-        className={`block-tile ${a.bg} h-9 w-9 shrink-0 hidden sm:inline-flex`}
+        className={`block-tile ${a.bg} h-9 w-9 shrink-0 inline-flex`}
       />
       <div className="min-w-0">
         <dt className="text-[11px] uppercase tracking-wider text-muted-foreground font-semibold">

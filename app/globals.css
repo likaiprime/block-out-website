@@ -196,13 +196,14 @@
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
     text-rendering: optimizeLegibility;
-    /* Sticky header offset for in-page anchor jumps */
-    scroll-padding-top: 5rem;
+    scroll-padding-top: calc(5rem + env(safe-area-inset-top, 0px));
   }
 
   body {
     @apply bg-background text-foreground;
     font-feature-settings: "ss01", "cv11";
+    padding-left: env(safe-area-inset-left, 0px);
+    padding-right: env(safe-area-inset-right, 0px);
   }
 
   ::selection {
@@ -358,6 +359,15 @@
 }
 .animate-subtle-pulse {
   animation: subtle-pulse 2.4s ease-in-out infinite;
+}
+
+/* Horizontal scroll regions — level group tabs, chip rows */
+.scroll-tabs {
+  -webkit-overflow-scrolling: touch;
+  scrollbar-width: none;
+}
+.scroll-tabs::-webkit-scrollbar {
+  display: none;
 }
 
 /* Blog post body — markdown output */

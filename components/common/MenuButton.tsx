@@ -11,7 +11,7 @@ const MenuButton: FC<MenuButtonProps> = ({ navbarOpen, onClick }) => {
       onClick={onClick}
       aria-label="Toggle menu"
       aria-expanded={navbarOpen}
-      className="inline-flex h-10 w-10 items-center justify-center rounded-xl text-foreground hover:bg-secondary transition-colors md:hidden"
+      className="inline-flex h-11 w-11 items-center justify-center rounded-xl text-foreground hover:bg-secondary transition-colors md:hidden"
     >
       <span className="relative block h-4 w-5">
         <span

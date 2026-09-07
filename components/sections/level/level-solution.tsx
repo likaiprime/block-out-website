@@ -113,7 +113,7 @@ export function LevelSolution({
   const frameIsPhoneShot = !!frameSrc;
 
   return (
-    <section className="pt-24 pb-16">
+    <section className="pt-[calc(5rem+env(safe-area-inset-top))] pb-28 md:pb-16">
       <div className="container max-w-4xl">
         {/* Breadcrumb */}
         <nav
@@ -224,10 +224,9 @@ export function LevelSolution({
         {levelInfo.youtubeid ? (
           <>
             <div
-              className="relative mx-auto w-full max-w-4xl overflow-hidden rounded-2xl bg-black shadow-2xl shadow-foreground/25 transition-shadow duration-300 hover:shadow-foreground/40"
+              className="relative mx-auto w-full max-w-4xl overflow-hidden rounded-2xl bg-black shadow-2xl shadow-foreground/25 transition-shadow duration-300 hover:shadow-foreground/40 max-h-[min(70vh,500px)]"
               style={{
                 aspectRatio: `${levelInfo.Width} / ${levelInfo.Height}`,
-                maxHeight: "500px",
               }}
             >
               <iframe
@@ -284,12 +283,13 @@ export function LevelSolution({
           </div>
         ) : null}
 
-        {/* Prev / List / Next */}
-        <div className="mt-6 grid grid-cols-3 gap-3">
+        {/* Prev / List / Next — fixed bar on phones */}
+        <div className="fixed bottom-0 inset-x-0 z-40 md:static md:z-auto border-t border-border bg-background/95 backdrop-blur-md md:border-0 md:bg-transparent md:backdrop-blur-none px-4 md:px-0 pt-3 md:pt-0 pb-[max(0.75rem,env(safe-area-inset-bottom))] md:pb-0 mt-0 md:mt-6">
+          <div className="grid grid-cols-3 gap-2 sm:gap-3">
           <Button
             asChild
             variant="outline"
-            className="h-12 justify-start min-w-0"
+            className="h-12 min-h-11 justify-start min-w-0"
             disabled={!prevLevel}
           >
             {prevLevel ? (
@@ -298,8 +298,7 @@ export function LevelSolution({
                 aria-label={`${t("prevLevel")} ${prevLevel}`}
               >
                 <ChevronLeft className="h-4 w-4 shrink-0" />
-                <span className="ml-1 truncate">
-                  <span className="hidden sm:inline">{t("prevLevel")} </span>
+                <span className="ml-1 truncate text-sm">
                   <span className="font-bold tabular-nums">{prevLevel}</span>
                 </span>
               </Link>
@@ -307,16 +306,18 @@ export function LevelSolution({
               <span className="opacity-50">—</span>
             )}
           </Button>
-          <Button asChild variant="outline" className="h-12 justify-center">
+          <Button asChild variant="outline" className="h-12 min-h-11 justify-center px-2">
             <Link href="/level/">
-              <List className="h-4 w-4 mr-1.5" />
-              {t("levelList")}
+              <List className="h-4 w-4 shrink-0" />
+              <span className="ml-1 truncate text-sm hidden min-[380px]:inline">
+                {t("levelList")}
+              </span>
             </Link>
           </Button>
           <Button
             asChild
             variant="outline"
-            className="h-12 justify-end min-w-0"
+            className="h-12 min-h-11 justify-end min-w-0"
             disabled={!nextLevel}
           >
             {nextLevel ? (
@@ -324,8 +325,7 @@ export function LevelSolution({
                 href={`/level/${nextLevel}/`}
                 aria-label={`${t("nextLevel")} ${nextLevel}`}
               >
-                <span className="mr-1 truncate">
-                  <span className="hidden sm:inline">{t("nextLevel")} </span>
+                <span className="mr-1 truncate text-sm">
                   <span className="font-bold tabular-nums">{nextLevel}</span>
                 </span>
                 <ChevronRight className="h-4 w-4 shrink-0" />
@@ -334,6 +334,7 @@ export function LevelSolution({
               <span className="opacity-50">—</span>
             )}
           </Button>
+          </div>
         </div>
 
         <AdSlot className="my-12" placeholderRatio="6 / 1" />

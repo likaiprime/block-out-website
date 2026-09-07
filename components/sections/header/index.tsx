@@ -36,6 +36,15 @@ export function Header() {
     return () => window.removeEventListener("scroll", onScroll);
   }, []);
 
+  useEffect(() => {
+    if (!open) return;
+    const prev = document.body.style.overflow;
+    document.body.style.overflow = "hidden";
+    return () => {
+      document.body.style.overflow = prev;
+    };
+  }, [open]);
+
   const baseNavigation = t.raw("navigation") as ReadonlyArray<NavItem>;
   const navItems: NavItem[] = [
     ...baseNavigation.slice(0, 2),
@@ -54,7 +63,7 @@ export function Header() {
   return (
     <header
       className={cn(
-        "fixed top-0 inset-x-0 z-50 transition-all duration-200",
+        "fixed top-0 inset-x-0 z-50 transition-all duration-200 pt-[env(safe-area-inset-top)]",
         scrolled
           ? "bg-background/85 backdrop-blur-md border-b border-border shadow-[0_1px_0_0_hsl(var(--border))]"
           : "bg-background/0 backdrop-blur-0 border-b border-transparent",
@@ -134,7 +143,7 @@ export function Header() {
         </div>
 
         {open && (
-          <nav className="md:hidden pb-4 grid gap-1 animate-fade-in">
+          <nav className="md:hidden pb-4 grid gap-1 animate-fade-in max-h-[min(70vh,24rem)] overflow-y-auto overscroll-contain">
             {navItems.map((item, i) => {
               const active = isActive(item.href);
               const palette = NAV_PALETTE[i % NAV_PALETTE.length];
