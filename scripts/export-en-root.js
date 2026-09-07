@@ -31,6 +31,19 @@ if (!fs.existsSync(EN_DIR)) {
 }
 
 copyRecursive(EN_DIR, OUT_DIR);
+
+// Ensure English homepage wins over any stale root index.html
+const enHome = path.join(EN_DIR, "index.html");
+const rootHome = path.join(OUT_DIR, "index.html");
+if (fs.existsSync(enHome)) {
+  fs.copyFileSync(enHome, rootHome);
+}
+
 fs.rmSync(EN_DIR, { recursive: true, force: true });
+
+if (!fs.existsSync(path.join(OUT_DIR, "level", "1", "index.html"))) {
+  console.error("export-en-root: /level/1 not found after export");
+  process.exit(1);
+}
 
 console.log("export-en-root: English pages now at / (removed /en directory)");

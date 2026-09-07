@@ -2,8 +2,42 @@
 User-agent: *
 Allow: /
 
+# GPTBot
+User-agent: GPTBot
+Disallow: /
+
+# CCBot
+User-agent: CCBot
+Disallow: /
+
+# ClaudeBot
+User-agent: ClaudeBot
+Disallow: /
+
+# Google-Extended
+User-agent: Google-Extended
+Disallow: /
+
+# Bytespider
+User-agent: Bytespider
+Disallow: /
+
+# Amazonbot
+User-agent: Amazonbot
+Disallow: /
+
+# Applebot-Extended
+User-agent: Applebot-Extended
+Disallow: /
+
+# meta-externalagent
+User-agent: meta-externalagent
+Disallow: /
+
 # Host
 Host: https://blockout.cc
 
 # Sitemaps
 Sitemap: https://blockout.cc/sitemap.xml
+Sitemap: https://blockout.cc/sitemap-1.xml
+Sitemap: https://blockout.cc/sitemap-2.xml

@@ -73,7 +73,6 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
   const description = `Watch the ${GAME_NAME} Level ${levelNumber} solution video, see step-by-step tips, difficulty rating, and FAQs. Solve color-sort puzzle level ${levelNumber} fast.`;
 
   const ogImage = getLevelOgImage(num, SITE_URL);
-  const canonical = getLocalePath(lang, `/level/${levelNumber}`);
 
   return {
     title: title.slice(0, 60),

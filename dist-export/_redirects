@@ -11,18 +11,26 @@
 # No-trailing-slash → add slash (prevents 404 on bare paths)
 /level /level/ 301
 /about /about/ 301
+/contact /contact/ 301
 /blog /blog/ 301
 /download /download/ 301
 /privacy /privacy/ 301
+/terms /terms/ 301
+/cookies /cookies/ 301
+/disclaimer /disclaimer/ 301
 /app /app/ 301
 
 # Root → English content (200 internal rewrite)
 /   /en/  200
 /about/   /en/about/  200
+/contact/   /en/contact/  200
 /blog/   /en/blog/  200
 /blog/*   /en/blog/:splat  200
 /download/   /en/download/  200
 /level/   /en/level/  200
 /level/*   /en/level/:splat  200
 /privacy/   /en/privacy/  200
+/terms/   /en/terms/  200
+/cookies/   /en/cookies/  200
+/disclaimer/   /en/disclaimer/  200
 /app/   /en/app/  200
