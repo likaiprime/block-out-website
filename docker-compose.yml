@@ -6,5 +6,5 @@ services:
     ports:
       - "3000:80"
     volumes:
-      - ./out:/usr/share/nginx/html:ro
+      - ./dist-export:/usr/share/nginx/html:ro
     restart: unless-stopped

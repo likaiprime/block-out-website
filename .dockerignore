@@ -1,7 +1,11 @@
 node_modules
-.next
+dist-export
+preview
 .git
-.env*
+.github
+.cursor
+.claude
 *.md
-Dockerfile
-docker-compose.yml
+.env*.local
+npm-debug.log*
+.DS_Store
