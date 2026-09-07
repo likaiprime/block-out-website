@@ -11,6 +11,7 @@
     "lint:fix": "next lint --fix",
     "format": "npx prettier --write .",
     "docker:build": "next build && docker compose build",
+    "docker:publish": "bash scripts/docker-build-push.sh",
     "docker:up": "docker compose up -d",
     "docker:down": "docker compose down"
   },
