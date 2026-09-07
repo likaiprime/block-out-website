@@ -15,7 +15,7 @@ export default function ThemeSwitcher() {
     <button
       onClick={() => setTheme(isDark ? "light" : "dark")}
       aria-label={isDark ? "Switch to light mode" : "Switch to dark mode"}
-      className="inline-flex h-10 w-10 items-center justify-center rounded-xl text-muted-foreground hover:text-foreground hover:bg-secondary transition-all"
+      className="inline-flex h-11 w-11 items-center justify-center rounded-xl text-muted-foreground hover:text-foreground hover:bg-secondary transition-all"
     >
       {/* Render both pre-mount to avoid SSR mismatch; CSS swaps based on .dark class.  */}
       {!mounted ? (

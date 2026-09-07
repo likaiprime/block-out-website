@@ -18,7 +18,7 @@ const sectionVariants = cva("relative", {
     },
     density: {
       default: "py-20 sm:py-24",
-      hero: "pt-24 pb-16 md:pt-28 md:pb-24",
+      hero: "pt-[calc(5.5rem+env(safe-area-inset-top))] pb-12 sm:pb-16 md:pt-28 md:pb-24",
       compact: "py-12 sm:py-16",
     },
   },

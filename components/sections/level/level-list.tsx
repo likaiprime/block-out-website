@@ -40,7 +40,7 @@ export function LevelList() {
   }, []);
 
   return (
-    <section className="pt-24 pb-16">
+    <section className="pt-[calc(5rem+env(safe-area-inset-top))] pb-16">
       <div className="container">
         <header className="mb-8 max-w-2xl">
           <h1 className="text-3xl sm:text-4xl font-black tracking-tight">
@@ -49,8 +49,12 @@ export function LevelList() {
           <p className="mt-3 text-muted-foreground text-lg">{t("subtitle")}</p>
         </header>
 
-        <div className="sticky top-16 z-30 -mx-5 md:mx-0 bg-background/70 backdrop-blur-md mb-8 shadow-lg shadow-foreground/5">
-          <div role="tablist" className="flex flex-wrap gap-2 px-5 md:px-0 py-3">
+        <div className="sticky top-[calc(4rem+env(safe-area-inset-top))] z-30 -mx-5 md:mx-0 bg-background/90 backdrop-blur-md mb-8 shadow-lg shadow-foreground/5 border-b border-border/60 md:border-0">
+          <div
+            role="tablist"
+            aria-label={t("title")}
+            className="scroll-tabs flex gap-2 px-5 md:px-0 py-3 overflow-x-auto flex-nowrap"
+          >
             {groups.map((g, i) => (
               <button
                 key={g.start}
@@ -58,7 +62,7 @@ export function LevelList() {
                 aria-selected={active === i}
                 onClick={() => setActive(i)}
                 className={cn(
-                  "px-3.5 py-2 rounded-full text-sm font-semibold transition-all min-h-[40px]",
+                  "shrink-0 px-4 py-2.5 rounded-full text-sm font-semibold transition-all min-h-11",
                   active === i
                     ? "bg-block-blue text-white shadow-md shadow-block-blue/40"
                     : "bg-card/70 backdrop-blur-sm text-muted-foreground hover:text-foreground hover:bg-card shadow-sm shadow-foreground/5",
@@ -82,7 +86,7 @@ export function LevelList() {
             <h2 className="sr-only">
               {t("levelLabel")} {g.start}–{g.end}
             </h2>
-            <ul className="grid grid-cols-4 sm:grid-cols-6 md:grid-cols-8 lg:grid-cols-10 gap-x-3 gap-y-5">
+            <ul className="grid grid-cols-3 sm:grid-cols-4 md:grid-cols-6 lg:grid-cols-8 xl:grid-cols-10 gap-x-3 gap-y-5">
               {g.items.map((lvl) => {
                 const accent = accentForDifficulty(lvl.difficulty as string);
                 const cls = ACCENT_CLASSES[accent];
