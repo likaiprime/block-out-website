@@ -52,7 +52,7 @@ export function LevelList() {
           <div
             role="tablist"
             aria-label={t("title")}
-            className="scroll-tabs flex gap-2 px-5 md:px-0 py-3 overflow-x-auto flex-nowrap"
+            className="flex flex-wrap gap-2 px-5 md:px-0 py-3"
           >
             {groups.map((g, i) => (
               <button
@@ -61,7 +61,7 @@ export function LevelList() {
                 aria-selected={active === i}
                 onClick={() => setActive(i)}
                 className={cn(
-                  "shrink-0 px-4 py-2.5 rounded-full text-sm font-semibold transition-all min-h-11",
+                  "px-3 sm:px-4 py-2 sm:py-2.5 rounded-full text-xs sm:text-sm font-semibold transition-all min-h-11",
                   active === i
                     ? "bg-block-blue text-white shadow-md shadow-block-blue/40"
                     : "bg-card/70 backdrop-blur-sm text-muted-foreground hover:text-foreground hover:bg-card shadow-sm shadow-foreground/5",
