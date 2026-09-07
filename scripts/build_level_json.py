@@ -27,7 +27,7 @@ ROOT = Path(__file__).resolve().parent.parent
 PLAYLIST_FILE = ROOT / "scripts" / "playlist.txt"
 OUTPUT_FILE = ROOT / "level" / "level.json"
 
-MAX_LEVEL = 200  # output entries 1..MAX_LEVEL; missing ones get a fallback
+DEFAULT_MAX_LEVEL = 946  # playlist titles go up to Level 946
 
 
 def parse_levels_from_title(title: str) -> tuple[str, list[int]]:
@@ -74,6 +74,8 @@ def main() -> None:
             continue
         if title.strip() in ("[Deleted video]", "[Private video]"):
             continue
+        if re.search(r"\bRound\b", title, re.IGNORECASE):
+            continue
         try:
             duration = int(float(dur)) if dur not in ("NA", "") else 0
         except ValueError:
@@ -119,9 +121,15 @@ def main() -> None:
             return "hard"
         return "expert"
 
+    max_level = max(
+        DEFAULT_MAX_LEVEL,
+        max(candidates.keys(), default=0),
+        max(super_hard.keys(), default=0),
+    )
+
     # Pick best candidate per level: prefer single-level over batch.
     out: list[dict] = []
-    for lvl in range(1, MAX_LEVEL + 1):
+    for lvl in range(1, max_level + 1):
         cands = candidates.get(lvl, [])
         # Sort: single-level first, then by duration desc.
         cands.sort(key=lambda c: (c["is_batch"], -c["duration"]))
