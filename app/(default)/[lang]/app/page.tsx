@@ -2,7 +2,7 @@ import type { Metadata } from "next";
 import AppDownload from "@/components/sections/app-download";
 import { getTranslations, setRequestLocale } from "next-intl/server";
 import { routing, type Locale } from "@/i18n/routing";
-import { ensureTrailingSlash } from "@/lib/utils";
+import { getAlternateLanguageUrls, getLocaleUrl } from "@/lib/locale-path";
 
 export async function generateStaticParams() {
   return routing.locales.map((lang) => ({ lang }));
@@ -20,13 +20,8 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
     title: t("meta.title"),
     description: t("meta.description"),
     alternates: {
-      canonical: ensureTrailingSlash(`/${lang}/app`),
-      languages: Object.fromEntries(
-        routing.locales.map((locale) => [
-          locale,
-          ensureTrailingSlash(`/${locale}/app`),
-        ])
-      ),
+      canonical: getLocaleUrl(lang, "/app"),
+      languages: getAlternateLanguageUrls("/app"),
     },
   };
 }

@@ -1,7 +1,7 @@
 import type { Locale } from "@/i18n/routing";
 import type { Metadata } from "next";
 import { routing } from "@/i18n/routing";
-import { ensureTrailingSlash } from "@/lib/utils";
+import { getAlternateLanguageUrls, getLocaleUrl } from "@/lib/locale-path";
 
 export type LegalPageSlug =
   | "about"
@@ -307,13 +307,8 @@ export function getLegalMetadata(locale: Locale, slug: LegalPageSlug): Metadata 
     title: content.title,
     description: content.subtitle,
     alternates: {
-      canonical: ensureTrailingSlash(`/${locale}/${slug}`),
-      languages: Object.fromEntries(
-        routing.locales.map((lang) => [
-          lang,
-          ensureTrailingSlash(`/${lang}/${slug}`),
-        ])
-      ),
+      canonical: getLocaleUrl(locale, `/${slug}`),
+      languages: getAlternateLanguageUrls(`/${slug}`),
     },
   };
 }

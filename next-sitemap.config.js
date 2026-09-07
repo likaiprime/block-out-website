@@ -37,7 +37,7 @@ module.exports = {
   alternateRefs: [
     { href: SITE_URL, hreflang: "x-default" },
     ...LOCALES.map((l) => ({
-      href: `${SITE_URL}/${l}`,
+      href: l === "en" ? SITE_URL : `${SITE_URL}/${l}`,
       hreflang: l === "zh" ? "zh-CN" : l === "tw" ? "zh-TW" : l,
     })),
   ],
@@ -55,6 +55,10 @@ module.exports = {
   },
   transform: async (config, path) => {
     const formatted = path.replace(/\/$/, "") || "/";
+    // Skip legacy /en paths if any remain before export-en-root
+    if (formatted === "/en" || formatted.startsWith("/en/")) {
+      return null;
+    }
     if (formatted === "/") {
       return {
         loc: formatted,

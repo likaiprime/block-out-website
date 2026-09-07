@@ -1,7 +1,7 @@
 import type { Metadata } from "next";
 import { setRequestLocale } from "next-intl/server";
 import { Link, routing, type Locale } from "@/i18n/routing";
-import { ensureTrailingSlash } from "@/lib/utils";
+import { getAlternateLanguageUrls, getLocaleUrl } from "@/lib/locale-path";
 import { getAllBlogPosts } from "@/lib/blog";
 
 const SITE_URL = process.env.NEXT_PUBLIC_SITE_URL || "https://blockout.cc";
@@ -25,15 +25,13 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
     description:
       "Read the latest Block Out! tips, comparisons, and strategy guides. Beginner walkthroughs, game comparisons, and color-sort puzzle theory.",
     alternates: {
-      canonical: ensureTrailingSlash(`/${lang}/blog`),
-      languages: Object.fromEntries(
-        routing.locales.map((l) => [l, ensureTrailingSlash(`/${l}/blog`)])
-      ),
+      canonical: getLocaleUrl(lang, "/blog"),
+      languages: getAlternateLanguageUrls("/blog"),
     },
     openGraph: {
       title: "Block Out! Blog",
       description: "Tips, comparisons, and strategy guides for Block Out!",
-      url: `${SITE_URL}${ensureTrailingSlash(`/${lang}/blog`)}`,
+      url: getLocaleUrl(lang, "/blog"),
       type: "website",
     },
   };

@@ -2,7 +2,10 @@ import type { Metadata } from "next";
 import { notFound } from "next/navigation";
 import { getTranslations, setRequestLocale } from "next-intl/server";
 import { routing, type Locale } from "@/i18n/routing";
-import { ensureTrailingSlash } from "@/lib/utils";
+import {
+  getAlternateLanguageUrls,
+  getLocaleUrl,
+} from "@/lib/locale-path";
 import {
   LevelSolution,
   type LevelGuide,
@@ -70,24 +73,19 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
   const description = `Watch the ${GAME_NAME} Level ${levelNumber} solution video, see step-by-step tips, difficulty rating, and FAQs. Solve color-sort puzzle level ${levelNumber} fast.`;
 
   const ogImage = getLevelOgImage(num, SITE_URL);
-  const canonical = ensureTrailingSlash(`/${lang}/level/${levelNumber}`);
+  const canonical = getLocalePath(lang, `/level/${levelNumber}`);
 
   return {
     title: title.slice(0, 60),
     description: description.slice(0, 160),
     alternates: {
-      canonical,
-      languages: Object.fromEntries(
-        routing.locales.map((locale) => [
-          locale,
-          ensureTrailingSlash(`/${locale}/level/${levelNumber}`),
-        ])
-      ),
+      canonical: getLocaleUrl(lang, `/level/${levelNumber}`),
+      languages: getAlternateLanguageUrls(`/level/${levelNumber}`),
     },
     openGraph: {
       title: t("solutionTitle").replace("{level}", levelNumber),
       description,
-      url: `${SITE_URL}${canonical}`,
+      url: getLocaleUrl(lang, `/level/${levelNumber}`),
       siteName: SITE_NAME,
       type: "article",
       locale: lang,
@@ -128,9 +126,9 @@ export default async function LevelDetailPage({ params }: Props) {
     faq: levelMessages.faq,
   };
 
-  const canonicalUrl = `${SITE_URL}${ensureTrailingSlash(`/${lang}/level/${level}`)}`;
-  const homeUrl = `${SITE_URL}${ensureTrailingSlash(`/${lang}`)}`;
-  const indexUrl = `${SITE_URL}${ensureTrailingSlash(`/${lang}/level`)}`;
+  const canonicalUrl = getLocaleUrl(lang, `/level/${level}`);
+  const homeUrl = getLocaleUrl(lang, "/");
+  const indexUrl = getLocaleUrl(lang, "/level");
   const frameUrl = hasLevelFrame(num)
     ? `${SITE_URL}/images/levels/level_${num}.webp`
     : `${SITE_URL}/images/store-assets/app_icon_512.png`;

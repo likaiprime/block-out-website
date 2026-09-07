@@ -7,7 +7,7 @@ import { LevelHighlights } from "@/components/sections/level-highlights";
 import { StructuredData } from "@/components/common/StructuredData";
 import { getTranslations, setRequestLocale } from "next-intl/server";
 import { routing, type Locale } from "@/i18n/routing";
-import { ensureTrailingSlash } from "@/lib/utils";
+import { getAlternateLanguageUrls, getLocaleUrl } from "@/lib/locale-path";
 import level from "@/level/level.json";
 
 const SITE_URL = process.env.NEXT_PUBLIC_SITE_URL || "https://blockout.cc";
@@ -27,22 +27,14 @@ export async function generateMetadata({ params }: Props) {
   const title = t("meta.title").replace("{totalLevels}", level.length.toString());
   const description = t("meta.description");
 
-  // With localePrefix: "as-needed", English should use root URL
-  const isDefault = lang === routing.defaultLocale;
-  const langPath = isDefault ? "/" : ensureTrailingSlash(`/${lang}`);
-  const langUrl = `${SITE_URL}${langPath}`;
+  const langUrl = getLocaleUrl(lang, "/");
 
   return {
     title,
     description,
     alternates: {
       canonical: langUrl,
-      languages: Object.fromEntries(
-        routing.locales.map((locale) => [
-          locale,
-          `${SITE_URL}${locale === routing.defaultLocale ? "/" : ensureTrailingSlash(`/${locale}`)}`,
-        ])
-      ),
+      languages: getAlternateLanguageUrls("/"),
     },
     openGraph: {
       title,
@@ -71,10 +63,7 @@ export default async function Home({ params }: Props) {
   const { lang } = await params;
   setRequestLocale(lang);
 
-  // With localePrefix: "as-needed", English uses root URL
-  const isDefault = lang === routing.defaultLocale;
-  const langPath = isDefault ? "/" : ensureTrailingSlash(`/${lang}`);
-  const homeUrl = `${SITE_URL}${langPath}`;
+  const homeUrl = getLocaleUrl(lang, "/");
 
   const websiteSchema = {
     "@context": "https://schema.org",
@@ -83,7 +72,7 @@ export default async function Home({ params }: Props) {
     url: homeUrl,
     potentialAction: {
       "@type": "SearchAction",
-      target: `${SITE_URL}/${lang}/level/{level_number}/`,
+      target: `${getLocaleUrl(lang, "/level").replace(/\/$/, "")}/{level_number}/`,
       "query-input": "required name=level_number",
     },
   };

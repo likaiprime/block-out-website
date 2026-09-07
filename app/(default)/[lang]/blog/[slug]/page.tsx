@@ -2,7 +2,7 @@ import type { Metadata } from "next";
 import { notFound } from "next/navigation";
 import { setRequestLocale } from "next-intl/server";
 import { Link, routing, type Locale } from "@/i18n/routing";
-import { ensureTrailingSlash } from "@/lib/utils";
+import { getAlternateLanguageUrls, getLocaleUrl } from "@/lib/locale-path";
 import { getAllBlogSlugs, getBlogPost } from "@/lib/blog";
 import { StructuredData } from "@/components/common/StructuredData";
 
@@ -31,20 +31,18 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
   setRequestLocale(lang);
   const post = getBlogPost(slug);
   if (!post) return {};
-  const canonical = ensureTrailingSlash(`/${lang}/blog/${slug}`);
+  const blogPath = `/blog/${slug}`;
   return {
     title: post.title,
     description: post.description,
     alternates: {
-      canonical,
-      languages: Object.fromEntries(
-        routing.locales.map((l) => [l, ensureTrailingSlash(`/${l}/blog/${slug}`)])
-      ),
+      canonical: getLocaleUrl(lang, blogPath),
+      languages: getAlternateLanguageUrls(blogPath),
     },
     openGraph: {
       title: post.title,
       description: post.description,
-      url: `${SITE_URL}${canonical}`,
+      url: getLocaleUrl(lang, blogPath),
       type: "article",
       publishedTime: post.date,
       authors: [post.author],
@@ -68,9 +66,9 @@ export default async function BlogDetailPage({ params }: Props) {
   const post = getBlogPost(slug);
   if (!post) notFound();
 
-  const canonicalUrl = `${SITE_URL}${ensureTrailingSlash(`/${lang}/blog/${slug}`)}`;
-  const homeUrl = `${SITE_URL}${ensureTrailingSlash(`/${lang}`)}`;
-  const blogUrl = `${SITE_URL}${ensureTrailingSlash(`/${lang}/blog`)}`;
+  const canonicalUrl = getLocaleUrl(lang, `/blog/${slug}`);
+  const homeUrl = getLocaleUrl(lang, "/");
+  const blogUrl = getLocaleUrl(lang, "/blog");
 
   const articleSchema = {
     "@context": "https://schema.org",

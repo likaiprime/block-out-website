@@ -1,10 +1,9 @@
 "use client";
 
-import { Link } from "@/i18n/routing";
+import { Link, usePathname } from "@/i18n/routing";
 import Image from "next/image";
 import { ChevronDown } from "lucide-react";
 import { useLocale } from "next-intl";
-import { usePathname } from "next/navigation";
 import { useEffect, useRef, useState } from "react";
 import { cn } from "@/lib/utils";
 import { langSwitcherData } from "./LangSwitcherData";
@@ -16,16 +15,6 @@ export default function LanguageSwitcher() {
   const rootRef = useRef<HTMLDivElement>(null);
 
   const currentLangData = langSwitcherData.find((item) => item.locale === locale);
-
-  const getNewPath = (target: string) => {
-    const segments = pathname?.split("/") || [];
-    if (locale === "en") {
-      segments.splice(1, 0, target);
-    } else {
-      segments[1] = target;
-    }
-    return segments.join("/");
-  };
 
   useEffect(() => {
     if (!open) return;
@@ -85,7 +74,8 @@ export default function LanguageSwitcher() {
               .map((item) => (
                 <Link
                   key={item.locale}
-                  href={getNewPath(item.locale)}
+                  href={pathname}
+                  locale={item.locale}
                   role="menuitem"
                   onClick={() => setOpen(false)}
                   className="flex min-h-11 items-center gap-3 px-3 py-2 mx-1.5 rounded-lg text-sm hover:bg-secondary transition-colors"
