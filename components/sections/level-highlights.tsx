@@ -12,11 +12,9 @@ import {
   ACCENT_CLASSES,
   accentForDifficulty,
 } from "@/lib/design-tokens";
+import { LevelThumbnail } from "@/components/common/LevelThumbnail";
 
 const HIGHLIGHTS = [1, 10, 25, 50, 75, 100];
-
-const CDN_BASE =
-  process.env.NEXT_PUBLIC_THUMBNAIL_CDN || "https://cdn.blockout.cc";
 
 export function LevelHighlights() {
   const t = useTranslations("level");
@@ -79,12 +77,9 @@ export function LevelHighlights() {
               >
                 {yt ? (
                   <>
-                    {/* eslint-disable-next-line @next/next/no-img-element */}
-                    <img
-                      src={`${CDN_BASE}/thumbnails/${yt}.avif`}
+                    <LevelThumbnail
+                      youtubeId={yt}
                       alt={`Block Out! Level ${n} walkthrough thumbnail`}
-                      loading="lazy"
-                      decoding="async"
                       className="absolute inset-0 h-full w-full object-cover transition-transform duration-700 group-hover:scale-110"
                     />
                     <span
