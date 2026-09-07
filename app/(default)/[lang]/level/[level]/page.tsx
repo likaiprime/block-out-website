@@ -16,7 +16,9 @@ import {
   getLevelOgImage,
   hasLevelFrame,
 } from "@/lib/level-frames";
+import { resolveLevelVideoId } from "@/lib/thumbnails";
 import levelData from "@/level/level.json";
+import { buildLevelVideoSchemas } from "@/lib/video-schema";
 
 const SITE_URL = process.env.NEXT_PUBLIC_SITE_URL || "https://blockout.cc";
 const SITE_NAME =
@@ -72,7 +74,11 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
   } | Video Guide`;
   const description = `Watch the ${GAME_NAME} Level ${levelNumber} solution video, see step-by-step tips, difficulty rating, and FAQs. Solve color-sort puzzle level ${levelNumber} fast.`;
 
-  const ogImage = getLevelOgImage(num, SITE_URL);
+  const ogImage = hasLevelFrame(num)
+    ? getLevelOgImage(num, SITE_URL)
+    : resolveLevelVideoId(meta ?? {})
+      ? `https://i.ytimg.com/vi/${resolveLevelVideoId(meta ?? {})}/maxresdefault.jpg`
+      : getLevelOgImage(num, SITE_URL);
 
   return {
     title: title.slice(0, 60),
@@ -175,22 +181,14 @@ export default async function LevelDetailPage({ params }: Props) {
     })),
   };
 
-  const videoObject = levelInfo.youtubeid
-    ? {
-        "@context": "https://schema.org",
-        "@type": "VideoObject",
-        name: `${GAME_NAME} Level ${level} Walkthrough`,
-        description: `Video walkthrough of ${GAME_NAME} Level ${level}, a ${guide.difficulty} color-sort puzzle.`,
-        thumbnailUrl: [
-          `https://i.ytimg.com/vi/${levelInfo.youtubeid}/hqdefault.jpg`,
-          frameUrl,
-        ],
-        uploadDate: process.env.NEXT_PUBLIC_APP_RELEASE_DATE || "2025-10-31",
-        duration: `PT${Math.round(levelInfo.Duration)}S`,
-        embedUrl: `https://www.youtube.com/embed/${levelInfo.youtubeid}`,
-        contentUrl: `https://www.youtube.com/watch?v=${levelInfo.youtubeid}`,
-      }
-    : null;
+  const videoSchemas = buildLevelVideoSchemas({
+    level: num,
+    gameName: GAME_NAME,
+    difficulty: guide.difficulty,
+    description: guide.description,
+    levelInfo,
+    frameUrl,
+  });
 
   const faqPage = {
     "@context": "https://schema.org",
@@ -202,9 +200,7 @@ export default async function LevelDetailPage({ params }: Props) {
     })),
   };
 
-  const schemas = videoObject
-    ? [breadcrumbList, howTo, videoObject, faqPage]
-    : [breadcrumbList, howTo, faqPage];
+  const schemas = [breadcrumbList, howTo, ...videoSchemas, faqPage];
 
   return (
     <>

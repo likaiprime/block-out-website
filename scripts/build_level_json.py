@@ -69,7 +69,9 @@ def main() -> None:
         if not raw.strip():
             continue
         try:
-            yid, title, dur = raw.split("|", 2)
+            parts = raw.split("|")
+            yid, title, dur = parts[0], parts[1], parts[2]
+            upload_date = parts[3].strip() if len(parts) > 3 else ""
         except ValueError:
             continue
         if title.strip() in ("[Deleted video]", "[Private video]"):
@@ -98,6 +100,7 @@ def main() -> None:
                 "batch": batch,
                 "is_batch": len(levels) > 1,
                 "raw_duration": duration,
+                "upload_date": upload_date,
             }
             if kind == "super-hard":
                 # store separately; keep first seen
@@ -148,6 +151,8 @@ def main() -> None:
                 "type": "normal",
                 "has_video": True,
             }
+            if chosen.get("upload_date"):
+                entry["upload_date"] = chosen["upload_date"]
         else:
             # No video for this level (e.g. levels 1-10 in this playlist).
             entry = {
@@ -164,6 +169,8 @@ def main() -> None:
         if sh:
             entry["super_hard_youtubeid"] = sh["youtubeid"]
             entry["super_hard_duration"] = sh["duration"]
+            if sh.get("upload_date"):
+                entry["super_hard_upload_date"] = sh["upload_date"]
         out.append(entry)
 
     OUTPUT_FILE.parent.mkdir(parents=True, exist_ok=True)
