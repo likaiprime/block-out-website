@@ -22,6 +22,8 @@ import {
 } from "@/components/ui/accordion";
 import levelData from "@/level/level.json";
 import AdSlot from "@/components/common/AdSlot";
+import { LevelThumbnail } from "@/components/common/LevelThumbnail";
+import { resolveLevelVideoId } from "@/lib/thumbnails";
 import { cn } from "@/lib/utils";
 
 interface LevelInfo {
@@ -69,9 +71,6 @@ const DIFFICULTY_TILE: Record<string, string> = {
   "super-hard": "bg-block-purple",
 };
 
-const CDN_BASE =
-  process.env.NEXT_PUBLIC_THUMBNAIL_CDN || "https://cdn.blockout.cc";
-
 // rotating accents for tip cards
 const TIP_ACCENTS = [
   "bg-block-blue",
@@ -107,10 +106,9 @@ export function LevelSolution({
 
   const related = buildRelatedLevels(current, maxLevel);
 
-  const ytid = (levelInfo.youtubeid || "").trim();
-  const cdnFallback = ytid ? `${CDN_BASE}/thumbnails/${ytid}.avif` : null;
-  const effectiveFrameSrc = frameSrc ?? cdnFallback;
+  const ytid = resolveLevelVideoId(levelInfo);
   const frameIsPhoneShot = !!frameSrc;
+  const showThumbnailPreview = !frameIsPhoneShot && !!ytid;
 
   return (
     <section className="pt-[calc(5rem+env(safe-area-inset-top))] pb-28 md:pb-16">
@@ -182,7 +180,7 @@ export function LevelSolution({
 
         {/* Level frame screenshot — phone-mockup for true portrait shots,
             simple shadow card when falling back to CDN video thumbnail. */}
-        {effectiveFrameSrc ? (
+        {frameIsPhoneShot || showThumbnailPreview ? (
           <figure className="mb-8 flex flex-col items-center">
             {frameIsPhoneShot ? (
               <div className="relative max-w-[280px] sm:max-w-[320px] w-full">
@@ -194,7 +192,7 @@ export function LevelSolution({
                   />
                   {/* eslint-disable-next-line @next/next/no-img-element */}
                   <img
-                    src={effectiveFrameSrc}
+                    src={frameSrc!}
                     alt={frameAlt ?? `Block Out! Level ${levelNumber} preview`}
                     width={1080}
                     height={1920}
@@ -205,9 +203,8 @@ export function LevelSolution({
               </div>
             ) : (
               <div className="relative w-full max-w-md overflow-hidden rounded-2xl bg-black shadow-2xl shadow-foreground/25">
-                {/* eslint-disable-next-line @next/next/no-img-element */}
-                <img
-                  src={effectiveFrameSrc}
+                <LevelThumbnail
+                  youtubeId={ytid}
                   alt={frameAlt ?? `Block Out! Level ${levelNumber} preview`}
                   loading="eager"
                   className="block w-full h-auto"
@@ -435,7 +432,7 @@ export function LevelSolution({
                 const m = levelData.find((l) => l.Level === n);
                 const tile =
                   DIFFICULTY_TILE[m?.difficulty as string] ?? "bg-block-blue";
-                const yt = (m?.youtubeid || "").trim();
+                const yt = resolveLevelVideoId(m ?? {});
                 const diffLabel = m?.difficulty
                   ? labels[m.difficulty] ?? m.difficulty.replace("-", " ")
                   : "";
@@ -453,12 +450,9 @@ export function LevelSolution({
                     >
                       {yt ? (
                         <>
-                          {/* eslint-disable-next-line @next/next/no-img-element */}
-                          <img
-                            src={`${CDN_BASE}/thumbnails/${yt}.avif`}
+                          <LevelThumbnail
+                            youtubeId={yt}
                             alt={`Block Out! Level ${n} thumbnail`}
-                            loading="lazy"
-                            decoding="async"
                             className="absolute inset-0 h-full w-full object-cover transition-transform duration-500 group-hover:scale-110"
                           />
                           <span

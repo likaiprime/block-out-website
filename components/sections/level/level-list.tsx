@@ -12,9 +12,8 @@ import {
   DIFFICULTIES,
 } from "@/lib/design-tokens";
 import AdSlot from "@/components/common/AdSlot";
-
-const CDN_BASE =
-  process.env.NEXT_PUBLIC_THUMBNAIL_CDN || "https://cdn.blockout.cc";
+import { LevelThumbnail } from "@/components/common/LevelThumbnail";
+import { resolveLevelVideoId } from "@/lib/thumbnails";
 
 const GROUP_SIZE = 25;
 
@@ -93,7 +92,7 @@ export function LevelList() {
                 const diffLabel =
                   labels[lvl.difficulty as string] ??
                   (lvl.difficulty || "").replace("-", " ");
-                const yt = (lvl.youtubeid || "").trim();
+                const yt = resolveLevelVideoId(lvl);
                 return (
                   <li
                     key={lvl.Level}
@@ -112,12 +111,9 @@ export function LevelList() {
                     >
                       {yt ? (
                         <>
-                          {/* eslint-disable-next-line @next/next/no-img-element */}
-                          <img
-                            src={`${CDN_BASE}/thumbnails/${yt}.avif`}
+                          <LevelThumbnail
+                            youtubeId={yt}
                             alt=""
-                            loading="lazy"
-                            decoding="async"
                             className="absolute inset-0 h-full w-full object-cover transition-transform duration-500 group-hover:scale-110"
                           />
                           <span
