@@ -13,6 +13,7 @@ import {
 } from "@/lib/design-tokens";
 import AdSlot from "@/components/common/AdSlot";
 import { LevelThumbnail } from "@/components/common/LevelThumbnail";
+import { resolveLevelVideoId } from "@/lib/thumbnails";
 
 const GROUP_SIZE = 25;
 
@@ -91,7 +92,7 @@ export function LevelList() {
                 const diffLabel =
                   labels[lvl.difficulty as string] ??
                   (lvl.difficulty || "").replace("-", " ");
-                const yt = (lvl.youtubeid || "").trim();
+                const yt = resolveLevelVideoId(lvl);
                 return (
                   <li
                     key={lvl.Level}

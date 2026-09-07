@@ -23,6 +23,7 @@ import {
 import levelData from "@/level/level.json";
 import AdSlot from "@/components/common/AdSlot";
 import { LevelThumbnail } from "@/components/common/LevelThumbnail";
+import { resolveLevelVideoId } from "@/lib/thumbnails";
 import { cn } from "@/lib/utils";
 
 interface LevelInfo {
@@ -105,7 +106,7 @@ export function LevelSolution({
 
   const related = buildRelatedLevels(current, maxLevel);
 
-  const ytid = (levelInfo.youtubeid || "").trim();
+  const ytid = resolveLevelVideoId(levelInfo);
   const frameIsPhoneShot = !!frameSrc;
   const showThumbnailPreview = !frameIsPhoneShot && !!ytid;
 
@@ -431,7 +432,7 @@ export function LevelSolution({
                 const m = levelData.find((l) => l.Level === n);
                 const tile =
                   DIFFICULTY_TILE[m?.difficulty as string] ?? "bg-block-blue";
-                const yt = (m?.youtubeid || "").trim();
+                const yt = resolveLevelVideoId(m ?? {});
                 const diffLabel = m?.difficulty
                   ? labels[m.difficulty] ?? m.difficulty.replace("-", " ")
                   : "";
