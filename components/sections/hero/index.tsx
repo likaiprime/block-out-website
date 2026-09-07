@@ -10,14 +10,15 @@ import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Section } from "@/components/ui/section";
 import { AccentTile } from "@/components/ui/accent-tile";
-import levelData from "@/level/level.json";
+import { getTotalLevels, getWalkthroughCount } from "@/lib/level-stats";
 import { ACCENT_CLASSES, type AccentName } from "@/lib/design-tokens";
 
 export function Hero() {
   const t = useTranslations("hero");
   const lang = useLocale();
   const [level, setLevel] = useState("");
-  const maxLevel = levelData.length;
+  const maxLevel = getTotalLevels();
+  const walkthroughCount = getWalkthroughCount();
   const rating = process.env.NEXT_PUBLIC_APP_RATING || "4.74";
   const ratingCount = process.env.NEXT_PUBLIC_APP_RATING_COUNT || "41380";
   const ratingCountFmt = Number(ratingCount).toLocaleString("en-US");
@@ -112,7 +113,7 @@ export function Hero() {
 
           <dl className="mt-4 sm:mt-6 grid grid-cols-3 gap-3 sm:gap-10 w-full">
             <Stat label={t("statLevels")} value={maxLevel} accent="blue" />
-            <Stat label={t("statVideos")} value={maxLevel} accent="orange" />
+            <Stat label={t("statVideos")} value={walkthroughCount} accent="orange" />
             <Stat label={t("statLanguages")} value={14} accent="purple" />
           </dl>
         </div>
