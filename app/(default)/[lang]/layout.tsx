@@ -40,6 +40,9 @@ export default async function RootLayout({
       dir={isRTL ? "rtl" : "ltr"}
       suppressHydrationWarning
     >
+      <head>
+        <script defer data-domain="blockout.cc" src="https://p.070122.xyz/js/script.js" />
+      </head>
       <body className={`${inter.variable} font-sans antialiased`}>
         <Providers
           attribute="class"
