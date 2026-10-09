@@ -5,7 +5,7 @@
   "scripts": {
     "dev": "next dev",
     "build": "next build",
-    "postbuild": "node scripts/export-en-root.js && node scripts/prune-export.js && next-sitemap",
+    "postbuild": "node scripts/export-en-root.js && node scripts/prune-export.js && next-sitemap && node scripts/check-seo-export.mjs",
     "start": "next start",
     "lint": "next lint",
     "lint:fix": "next lint --fix",

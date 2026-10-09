@@ -1,0 +1,13 @@
+{
+  "domain": "blockout.cc",
+  "host": "blockout.cc",
+  "key": "c08cb074e81ffe3b289a7bab8e1cf2a8c4e794b2593edebe8d9816b99bc1324e",
+  "keyLocation": "https://blockout.cc/indexnow.txt",
+  "sitemap": "https://blockout.cc/sitemap.xml",
+  "seedUrls": [
+    "https://blockout.cc/"
+  ],
+  "endpoint": "https://api.indexnow.org/indexnow",
+  "existingKey": true,
+  "sourceRoot": "C:\\Users\\Administrator\\Documents\\Codex\\2026-10-09\\plausible-plausible-https-p-070122-xyz\\work\\blockout-production"
+}

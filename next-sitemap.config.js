@@ -31,8 +31,11 @@ const AI_TRAINING_BOTS = [
 
 module.exports = {
   siteUrl: SITE_URL,
+  // Docker serves dist-export; sitemap files generated after Next's export
+  // must be written into that same directory.
+  outDir: "dist-export",
   generateRobotsTxt: true,
-  generateIndexSitemap: false,
+  generateIndexSitemap: true,
   exclude: ["/404", "/500"],
   alternateRefs: [
     { href: SITE_URL, hreflang: "x-default" },
