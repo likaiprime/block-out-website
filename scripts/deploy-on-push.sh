@@ -14,7 +14,7 @@ if [[ "${1:-}" == "--install" ]]; then
   hook="$REPO/.git/hooks/pre-push"
   cat > "$hook" <<'HOOK'
 #!/usr/bin/env bash
-# Deploys main after the push goes through; see scripts/deploy-on-push.sh.
+# Deploys master after the push goes through; see scripts/deploy-on-push.sh.
 repo="$(git rev-parse --show-toplevel)"
 while read -r _ local_sha remote_ref _; do
   if [[ "$remote_ref" == "refs/heads/master" && "$local_sha" != 0000000* ]]; then
