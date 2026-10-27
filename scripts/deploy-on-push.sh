@@ -56,7 +56,9 @@ git -C "$REPO" worktree add --detach "$work" "$sha"
 cp "$REPO/.env" "$work/.env"
 cd "$work"
 status=ok
-npm ci --no-audit --no-fund && npm run build && npx wrangler deploy || status=failed
+# Asset uploads resume where they stopped, so a timed-out upload is retried.
+deploy() { for _ in 1 2 3 4 5; do npx wrangler deploy && return 0; done; return 1; }
+npm ci --no-audit --no-fund && npm run build && deploy || status=failed
 echo "=== $(date '+%F %T') ${sha:0:7} $status"
 osascript -e "display notification \"${sha:0:7} $status\" with title \"blockout.cc deploy\"" || true
 [[ "$status" == ok ]]
