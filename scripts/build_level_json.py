@@ -3,7 +3,16 @@
 The playlist is at:
   https://www.youtube.com/playlist?list=PLJ7aTNdGDxmvbd4cVbTiRtUyHB530LtSe
 
-Each line in scripts/playlist.txt is `youtubeid|title|duration`.
+Each line in scripts/playlist.txt is `youtubeid|title|duration`. Refresh it with
+  yt-dlp --flat-playlist --print '%(id)s|%(title)s|%(duration)s' <playlist url>
+
+scripts/extra_videos.txt uses the same format (lines starting with `#` are
+comments) for walkthroughs that are not in the playlist: Gamer Fox uploads that
+were never added to it, and other channels' videos for levels Gamer Fox has no
+video for. Playlist videos win over extra videos for the same level.
+
+Only titles that start with "Block Out" count: the playlist also contains a few
+videos of other games (e.g. "Sand Blocks Level 39 ...").
 
 Title formats we recognise:
   Block Out! - Color Sort Puzzle Level 11-12-...-20 Solution Walkthrough  (batch)
@@ -25,9 +34,10 @@ from pathlib import Path
 
 ROOT = Path(__file__).resolve().parent.parent
 PLAYLIST_FILE = ROOT / "scripts" / "playlist.txt"
+EXTRA_FILE = ROOT / "scripts" / "extra_videos.txt"
 OUTPUT_FILE = ROOT / "level" / "level.json"
 
-DEFAULT_MAX_LEVEL = 946  # playlist titles go up to Level 946
+DEFAULT_MAX_LEVEL = 1149  # playlist titles go up to Level 1149
 
 
 def parse_levels_from_title(title: str) -> tuple[str, list[int]]:
@@ -43,7 +53,7 @@ def parse_levels_from_title(title: str) -> tuple[str, list[int]]:
         kind = "hard"
 
     # Try a range like "Level 11-12-13-14-15-16-17-18-19-20" or "Level 60-61-62-63".
-    m = re.search(r"Level\s+([\d\s\-]+?)(?=\s+Solution|\s+Walkthrough|$)", t)
+    m = re.search(r"Level\s+([\d\s\-]+?)(?=\s+Solution|\s+Walkthrough|$)", t, re.IGNORECASE)
     if not m:
         return kind, []
     raw = m.group(1)
@@ -65,8 +75,12 @@ def main() -> None:
     candidates: dict[int, list[dict]] = {}
     super_hard: dict[int, dict] = {}
 
-    for raw in PLAYLIST_FILE.read_text(encoding="utf-8").splitlines():
-        if not raw.strip():
+    lines = [(raw, False) for raw in PLAYLIST_FILE.read_text(encoding="utf-8").splitlines()]
+    if EXTRA_FILE.exists():
+        lines += [(raw, True) for raw in EXTRA_FILE.read_text(encoding="utf-8").splitlines()]
+
+    for raw, is_extra in lines:
+        if not raw.strip() or raw.lstrip().startswith("#"):
             continue
         try:
             parts = raw.split("|")
@@ -75,6 +89,8 @@ def main() -> None:
         except ValueError:
             continue
         if title.strip() in ("[Deleted video]", "[Private video]"):
+            continue
+        if not re.match(r"block out", title.strip(), re.IGNORECASE):
             continue
         if re.search(r"\bRound\b", title, re.IGNORECASE):
             continue
@@ -99,11 +115,12 @@ def main() -> None:
                 "kind": kind,
                 "batch": batch,
                 "is_batch": len(levels) > 1,
+                "is_extra": is_extra,
                 "raw_duration": duration,
                 "upload_date": upload_date,
             }
             if kind == "super-hard":
-                # store separately; keep first seen
+                # store separately; keep first seen (playlist lines come first)
                 super_hard.setdefault(lvl, entry)
             else:
                 candidates.setdefault(lvl, []).append(entry)
@@ -134,8 +151,8 @@ def main() -> None:
     out: list[dict] = []
     for lvl in range(1, max_level + 1):
         cands = candidates.get(lvl, [])
-        # Sort: single-level first, then by duration desc.
-        cands.sort(key=lambda c: (c["is_batch"], -c["duration"]))
+        # Sort: single-level first, playlist before extras, then duration desc.
+        cands.sort(key=lambda c: (c["is_batch"], c["is_extra"], -c["duration"]))
         chosen = cands[0] if cands else None
         sh = super_hard.get(lvl)
 

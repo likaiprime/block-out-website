@@ -1,0 +1,28 @@
+{
+  "description": "An advanced level with overlapping pieces and complex routing. Solving it cleanly often requires moving blocks out of the way and back.",
+  "tips": [
+    "Identify the choke point on the board and treat it as your bottleneck — sequence around it.",
+    "Some blocks must be moved twice: once to clear a path, then back to their gate.",
+    "Watch the video at 0.5x speed to catch micro-moves that look like one slide.",
+    "If two pieces have only one viable exit each, there's usually only one correct order.",
+    "Reset early if your first 4 moves don't match the optimal opening — you'll save time."
+  ],
+  "faq": [
+    {
+      "q": "Why does this level look easier in the video than in my game?",
+      "a": "Block Out level layouts are deterministic per level number. If your board looks different, double-check that you're on the same level — Daily Challenge and Event boards reuse level numbers."
+    },
+    {
+      "q": "How do I rotate or flip pieces?",
+      "a": "Block Out doesn't support rotation. The shape you see is the shape you have to slide. Plan around the orientation."
+    },
+    {
+      "q": "Can I undo a wrong move?",
+      "a": "Yes — tap the undo button after a misstep. Each level allows unlimited undos until you complete it. There's no penalty."
+    },
+    {
+      "q": "What if I'm running out of moves?",
+      "a": "Restart the level instead of burning hints. Most levels can be solved in well under the move limit once you know the order."
+    }
+  ]
+}
