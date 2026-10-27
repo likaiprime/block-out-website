@@ -1,20 +1,18 @@
 {
   "$schema": "node_modules/wrangler/config-schema.json",
   "name": "blockout",
-  // A static export served from assets; the script only redirects www.
-  "main": "worker/index.ts",
+  // A pure static export: no Worker script, Cloudflare serves dist-export as-is.
+  // www -> apex is a zone redirect rule, which runs before the Worker.
   "compatibility_date": "2026-10-01",
   "assets": {
     "directory": "./dist-export",
-    "binding": "ASSETS",
     // /level/1 -> /level/1/ and /level/1/ -> level/1/index.html, as nginx did.
     "html_handling": "force-trailing-slash",
     "not_found_handling": "404-page"
   },
   "workers_dev": true,
   "routes": [
-    { "pattern": "blockout.cc", "custom_domain": true },
-    { "pattern": "www.blockout.cc", "custom_domain": true }
+    { "pattern": "blockout.cc", "custom_domain": true }
   ],
   "observability": { "enabled": true }
 }
