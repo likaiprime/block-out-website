@@ -47,7 +47,8 @@
       "email": "contact@blockout.cc"
     },
     "copyrightSuffix": "All rights reserved.",
-    "disclaimer": "{game} ガイドは独立したファンメイドのリソースであり、{developer} との提携、承認、または後援を受けていません。すべての商標はそれぞれの所有者に帰属します。"
+    "disclaimer": "{game} ガイドは独立したファンメイドのリソースであり、{developer} との提携、承認、または後援を受けていません。すべての商標はそれぞれの所有者に帰属します。",
+    "sisterSites": "その他のパズル攻略"
   },
   "faq": {
     "title": "Block Out! よくある質問",

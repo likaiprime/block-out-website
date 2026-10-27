@@ -32,6 +32,7 @@
     "tailwind-merge": "^2.2.1"
   },
   "devDependencies": {
+    "@cloudflare/workers-types": "^5.20261027.1",
     "@tailwindcss/postcss": "^4.1.7",
     "@types/node": "^20.17.10",
     "@types/react": "^19",
@@ -40,7 +41,8 @@
     "eslint-config-next": "^15.4.8",
     "postcss": "^8",
     "tailwindcss": "^4.1.7",
-    "typescript": "^5"
+    "typescript": "^5",
+    "wrangler": "^4.152.0"
   },
   "overrides": {
     "react": "19.1.2",

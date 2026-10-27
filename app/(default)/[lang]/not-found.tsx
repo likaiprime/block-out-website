@@ -2,6 +2,7 @@
 
 import { Link } from "@/i18n/routing";
 import { useTranslations, useLocale } from "next-intl";
+import { NO_ADS_ATTR } from "@/components/adsense";
 
 type NavItem = { name: string; href: string };
 
@@ -10,7 +11,7 @@ export default function NotFound() {
   const lang = useLocale();
   const nav = tHeader.raw("navigation") as ReadonlyArray<NavItem>;
   return (
-    <main className="pt-32 pb-24">
+    <main className="pt-32 pb-24" {...{ [NO_ADS_ATTR]: "" }}>
       <div className="container max-w-xl text-center">
         <div className="block-grid mx-auto mb-8 max-w-[220px]">
           {[

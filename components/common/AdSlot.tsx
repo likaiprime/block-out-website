@@ -1,6 +1,7 @@
 "use client";
 
-import { useEffect, useRef } from "react";
+import { useEffect, useRef, useState } from "react";
+import { canServeAds } from "@/components/adsense";
 
 interface AdSlotProps {
   slot?: string;
@@ -22,16 +23,22 @@ export default function AdSlot({
 }: AdSlotProps) {
   const adsenseId = process.env.NEXT_PUBLIC_GOOGLE_ADSENSE_ID;
   const insRef = useRef<HTMLModElement | null>(null);
+  // Decided on the client: bots, previews and framed loads get no ad unit.
+  const [allowed, setAllowed] = useState(false);
 
   useEffect(() => {
-    if (!adsenseId || !insRef.current) return;
+    setAllowed(canServeAds());
+  }, []);
+
+  useEffect(() => {
+    if (!adsenseId || !allowed || !insRef.current) return;
     try {
       // @ts-expect-error AdSense globally injected
       (window.adsbygoogle = window.adsbygoogle || []).push({});
     } catch {
       // no-op
     }
-  }, [adsenseId]);
+  }, [adsenseId, allowed]);
 
   if (!adsenseId) {
     return (
@@ -44,6 +51,8 @@ export default function AdSlot({
       </div>
     );
   }
+
+  if (!allowed) return null;
 
   return (
     <ins

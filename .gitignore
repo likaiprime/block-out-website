@@ -39,3 +39,7 @@ public/robots.txt
 
 # build cache
 .cache
+
+# wrangler
+/.wrangler/
+/dist-export/

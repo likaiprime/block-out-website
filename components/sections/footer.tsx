@@ -6,6 +6,12 @@ import { Link } from "@/i18n/routing";
 
 type NavItem = { name: string; href: string };
 
+// Sister walkthrough sites, linked from every page.
+const SISTER_SITES = [
+  { href: "https://www.colorblockjam.org/", name: "Color Block Jam Walkthrough" },
+  { href: "https://www.geckoout.com/", name: "Gecko Out Walkthrough" },
+];
+
 const PALETTE = [
   "bg-block-red",
   "bg-block-orange",
@@ -45,7 +51,7 @@ export function Footer() {
       </div>
 
       <div className="container py-14">
-        <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-4 gap-8">
+        <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-5 gap-8">
           <div className="col-span-2">
             <Link
               href="/"
@@ -116,6 +122,23 @@ export function Footer() {
               <Mail className="h-4 w-4" />
               {email}
             </a>
+          </div>
+
+          <div>
+            <h3 className="text-sm font-bold mb-4 tracking-tight">
+              {t("sisterSites")}
+            </h3>
+            <nav className="flex flex-col gap-2.5 text-sm">
+              {SISTER_SITES.map((site) => (
+                <a
+                  key={site.href}
+                  href={site.href}
+                  className="text-muted-foreground hover:text-foreground transition-colors"
+                >
+                  {site.name}
+                </a>
+              ))}
+            </nav>
           </div>
         </div>
 

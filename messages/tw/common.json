@@ -47,7 +47,8 @@
       "email": "contact@blockout.cc"
     },
     "copyrightSuffix": "所有權利保留。",
-    "disclaimer": "{game} 實戰攻略是由粉絲自行製作的資源，並未獲得、贊助或由 {developer} 授權。所有商標歸其各自所有人所有。"
+    "disclaimer": "{game} 實戰攻略是由粉絲自行製作的資源，並未獲得、贊助或由 {developer} 授權。所有商標歸其各自所有人所有。",
+    "sisterSites": "更多益智遊戲攻略"
   },
   "faq": {
     "title": "Block Out! 常見問題",
