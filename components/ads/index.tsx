@@ -33,14 +33,15 @@ const UNITS = {
   desktop: { key: process.env.NEXT_PUBLIC_ADSTERRA_728X90, width: 728, height: 90 },
   mobile: { key: process.env.NEXT_PUBLIC_ADSTERRA_320X50, width: 320, height: 50 },
 };
-const INVOKE_HOST =
-  process.env.NEXT_PUBLIC_ADSTERRA_HOST || "www.highperformanceformat.com";
+// The loader URL Adsterra's "Get code" snippet uses, with the unit key at the end.
+const SCRIPT_BASE =
+  process.env.NEXT_PUBLIC_ADSTERRA_SCRIPT_BASE || "https://bauval.org/22/";
 
 // Adsterra's snippet reads a global `atOptions`, so two units on one page
 // clash. Each banner gets its own document instead.
 function bannerDocument(key: string, width: number, height: number) {
   const options = JSON.stringify({ key, format: "iframe", height, width, params: {} });
-  return `<!doctype html><html><body style="margin:0"><script>atOptions=${options};</script><script src="https://${INVOKE_HOST}/${key}/invoke.js"></script></body></html>`;
+  return `<!doctype html><html><body style="margin:0"><script>atOptions=${options};</script><script src="${SCRIPT_BASE}${key}"></script></body></html>`;
 }
 
 export default function AdBanner({ className = "" }: { className?: string }) {
