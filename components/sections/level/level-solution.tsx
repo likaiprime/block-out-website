@@ -334,8 +334,6 @@ export function LevelSolution({
           </div>
         </div>
 
-        <AdBanner className="my-12" />
-
         {/* Tips */}
         <section aria-labelledby="tips-heading" className="mt-12">
           <h2
@@ -417,6 +415,9 @@ export function LevelSolution({
             </Button>
           </div>
         </section>
+
+        {/* After the tips and level info, so the guide itself comes first. */}
+        <AdBanner className="mt-12" />
 
         {/* Related levels */}
         {related.length > 0 && (

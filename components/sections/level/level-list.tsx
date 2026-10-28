@@ -73,8 +73,6 @@ export function LevelList() {
           </div>
         </div>
 
-        <AdBanner className="mb-8" />
-
         {groups.map((g, i) => (
           <div
             key={g.start}
@@ -146,6 +144,9 @@ export function LevelList() {
             </ul>
           </div>
         ))}
+
+        {/* Below the grid, so the levels themselves come first. */}
+        <AdBanner className="mt-12" />
 
         <DifficultyLegend />
       </div>

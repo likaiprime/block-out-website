@@ -66,7 +66,9 @@ export default function AdBanner({ className = "" }: { className?: string }) {
         loading="lazy"
         scrolling="no"
         sandbox="allow-scripts allow-popups allow-popups-to-escape-sandbox"
-        style={{ border: 0, maxWidth: "100%" }}
+        // A light frame inside a dark page gets an opaque white canvas; matching
+        // the frame's own scheme keeps an unfilled slot transparent.
+        style={{ border: 0, maxWidth: "100%", colorScheme: "light" }}
       />
     </div>
   );
