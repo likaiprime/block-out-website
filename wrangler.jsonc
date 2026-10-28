@@ -2,7 +2,6 @@
   "$schema": "node_modules/wrangler/config-schema.json",
   "name": "blockout",
   // A pure static export: no Worker script, Cloudflare serves dist-export as-is.
-  // www -> apex is a zone redirect rule, which runs before the Worker.
   "compatibility_date": "2026-10-01",
   "assets": {
     "directory": "./dist-export",
@@ -11,10 +10,9 @@
     "not_found_handling": "404-page"
   },
   "workers_dev": true,
-  // www is attached only so the zone's www -> apex redirect rule has a host to fire on.
+  // www.blockout.cc is the blockout-www Worker (workers/www-redirect), a 301 to here.
   "routes": [
-    { "pattern": "blockout.cc", "custom_domain": true },
-    { "pattern": "www.blockout.cc", "custom_domain": true }
+    { "pattern": "blockout.cc", "custom_domain": true }
   ],
   "observability": { "enabled": true }
 }

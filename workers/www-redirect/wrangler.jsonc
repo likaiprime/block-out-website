@@ -1,0 +1,11 @@
+{
+  "$schema": "../../node_modules/wrangler/config-schema.json",
+  "name": "blockout-www",
+  // The old nginx server used to do this redirect; the zone has no redirect rule for it.
+  "main": "index.js",
+  "compatibility_date": "2026-10-01",
+  "workers_dev": false,
+  "routes": [
+    { "pattern": "www.blockout.cc", "custom_domain": true }
+  ]
+}
