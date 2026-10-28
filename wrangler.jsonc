@@ -11,8 +11,10 @@
     "not_found_handling": "404-page"
   },
   "workers_dev": true,
+  // www is attached only so the zone's www -> apex redirect rule has a host to fire on.
   "routes": [
-    { "pattern": "blockout.cc", "custom_domain": true }
+    { "pattern": "blockout.cc", "custom_domain": true },
+    { "pattern": "www.blockout.cc", "custom_domain": true }
   ],
   "observability": { "enabled": true }
 }
