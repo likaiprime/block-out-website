@@ -11,7 +11,7 @@ import {
   accentForDifficulty,
   DIFFICULTIES,
 } from "@/lib/design-tokens";
-import AdSlot from "@/components/common/AdSlot";
+import AdBanner from "@/components/ads";
 import { LevelThumbnail } from "@/components/common/LevelThumbnail";
 import { resolveLevelVideoId } from "@/lib/thumbnails";
 
@@ -73,7 +73,7 @@ export function LevelList() {
           </div>
         </div>
 
-        <AdSlot className="mb-8" placeholderRatio="8 / 1" />
+        <AdBanner className="mb-8" />
 
         {groups.map((g, i) => (
           <div

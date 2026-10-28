@@ -21,7 +21,7 @@ import {
   AccordionTrigger,
 } from "@/components/ui/accordion";
 import levelData from "@/level/level.json";
-import AdSlot from "@/components/common/AdSlot";
+import AdBanner from "@/components/ads";
 import { LevelThumbnail } from "@/components/common/LevelThumbnail";
 import { resolveLevelVideoId } from "@/lib/thumbnails";
 import { cn } from "@/lib/utils";
@@ -334,7 +334,7 @@ export function LevelSolution({
           </div>
         </div>
 
-        <AdSlot className="my-12" placeholderRatio="6 / 1" />
+        <AdBanner className="my-12" />
 
         {/* Tips */}
         <section aria-labelledby="tips-heading" className="mt-12">

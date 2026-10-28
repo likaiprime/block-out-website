@@ -112,7 +112,7 @@ const sharedSections: Record<LegalPageSlug, LegalSection[]> = {
     {
       title: "Funding and independence",
       paragraphs: [
-        "The guide may be supported by advertising, including Google AdSense. Ads keep the walkthrough free to access.",
+        "The guide may be supported by advertising, including banner ads from Adsterra. Ads keep the walkthrough free to access.",
         "blockout.cc is not affiliated with, endorsed by, or sponsored by Grand Games.",
       ],
     },
@@ -156,7 +156,7 @@ const sharedSections: Record<LegalPageSlug, LegalSection[]> = {
       items: [
         "Cloudflare or hosting request logs such as IP address, URL, timestamp, user-agent, and security events.",
         "Aggregate analytics data if analytics is enabled, such as page views, referrers, device class, and approximate region.",
-        "Google AdSense data when ads load, subject to Google's own policies and consent controls where applicable.",
+        "Adsterra ad-serving data when banner ads load, subject to Adsterra's own privacy policy.",
         "YouTube embed data when you load or play embedded walkthrough videos.",
         "Outbound App Store and Google Play links, which are handled by Apple and Google after you leave this site.",
       ],
@@ -233,7 +233,7 @@ const sharedSections: Record<LegalPageSlug, LegalSection[]> = {
       items: [
         "Essential preferences such as theme or language when the site or browser stores those choices.",
         "Analytics cookies or similar signals if analytics is enabled.",
-        "Google AdSense cookies and ad identifiers when ads are shown.",
+        "Adsterra cookies and ad identifiers when banner ads are shown.",
         "YouTube cookies or local storage when embedded walkthrough videos are loaded or played.",
       ],
     },

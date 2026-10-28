@@ -2,7 +2,7 @@
 
 import { Link } from "@/i18n/routing";
 import { useTranslations, useLocale } from "next-intl";
-import { NO_ADS_ATTR } from "@/components/adsense";
+import { NO_ADS_ATTR } from "@/components/ads";
 
 type NavItem = { name: string; href: string };
 

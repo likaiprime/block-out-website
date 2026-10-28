@@ -6,7 +6,6 @@ import "@/app/globals.css";
 import { routing } from "@/i18n/routing";
 import { Providers } from "@/components/providers";
 import { MainLayout } from "@/components/layouts/main-layout";
-import GoogleAdsense from "@/components/adsense";
 import GoogleAnalytics from "@/components/analytics/google-analytics";
 
 const inter = Inter({
@@ -55,7 +54,6 @@ export default async function RootLayout({
           </NextIntlClientProvider>
         </Providers>
         <GoogleAnalytics />
-        <GoogleAdsense />
       </body>
     </html>
   );
