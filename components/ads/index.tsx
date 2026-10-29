@@ -1,6 +1,6 @@
 "use client";
 
-import { useEffect, useState } from "react";
+import { useEffect, useRef, useState } from "react";
 
 // Crawlers, headless browsers and automation tools. Serving them ads only
 // produces impressions the ad network discards as invalid traffic.
@@ -37,15 +37,23 @@ const UNITS = {
 const SCRIPT_BASE =
   process.env.NEXT_PUBLIC_ADSTERRA_SCRIPT_BASE || "https://bauval.org/22/";
 
-// Adsterra's snippet reads a global `atOptions`, so two units on one page
-// clash. Each banner gets its own document instead.
-function bannerDocument(key: string, width: number, height: number) {
-  const options = JSON.stringify({ key, format: "iframe", height, width, params: {} });
-  return `<!doctype html><html><body style="margin:0"><script>atOptions=${options};</script><script src="${SCRIPT_BASE}${key}"></script></body></html>`;
+// Adsterra's snippet, inserted into the page itself: Adsterra does not accept
+// traffic generated within iframes, so wrapping it in a frame of our own got
+// no fill. The loader draws the ad in its own iframe. It reads the global
+// `atOptions`, so a page carries a single banner.
+function insertSnippet(slot: HTMLElement, key: string, width: number, height: number) {
+  const options = document.createElement("script");
+  options.text = `atOptions = ${JSON.stringify({ key, format: "iframe", height, width, params: {} })};`;
+  const loader = document.createElement("script");
+  // Keeps Cloudflare Rocket Loader from rewriting it, per Adsterra's docs.
+  loader.setAttribute("data-cfasync", "false");
+  loader.src = `${SCRIPT_BASE}${key}`;
+  slot.append(options, loader);
 }
 
 export default function AdBanner({ className = "" }: { className?: string }) {
   const [unit, setUnit] = useState<(typeof UNITS)["desktop"] | null>(null);
+  const slotRef = useRef<HTMLDivElement>(null);
 
   // Decided on the client: bots, previews and framed loads get no banner.
   useEffect(() => {
@@ -54,21 +62,37 @@ export default function AdBanner({ className = "" }: { className?: string }) {
     if (candidate.key) setUnit(candidate);
   }, []);
 
+  // Loaded only once the slot is near the viewport, so the ad never delays the
+  // page and readers who leave early are not counted.
+  useEffect(() => {
+    const slot = slotRef.current;
+    if (!unit?.key || !slot) return;
+    const observer = new IntersectionObserver(
+      (entries) => {
+        if (!entries.some((e) => e.isIntersecting)) return;
+        observer.disconnect();
+        insertSnippet(slot, unit.key!, unit.width, unit.height);
+      },
+      { rootMargin: "200px" },
+    );
+    observer.observe(slot);
+    return () => {
+      observer.disconnect();
+      slot.replaceChildren();
+    };
+  }, [unit]);
+
   if (!unit?.key) return null;
 
   return (
     <div className={`flex justify-center ${className}`}>
-      <iframe
-        title="Advertisement"
-        srcDoc={bannerDocument(unit.key, unit.width, unit.height)}
-        width={unit.width}
-        height={unit.height}
-        loading="lazy"
-        scrolling="no"
-        sandbox="allow-scripts allow-popups allow-popups-to-escape-sandbox"
-        // A light frame inside a dark page gets an opaque white canvas; matching
-        // the frame's own scheme keeps an unfilled slot transparent.
-        style={{ border: 0, maxWidth: "100%", colorScheme: "light" }}
+      {/* Reserved size, so the page does not jump when the ad arrives. A light
+          scheme matches the ad's own frame, so an unfilled one stays
+          transparent instead of a white box on the dark theme. */}
+      <div
+        ref={slotRef}
+        aria-label="Advertisement"
+        style={{ width: unit.width, height: unit.height, maxWidth: "100%", overflow: "hidden", colorScheme: "light" }}
       />
     </div>
   );
